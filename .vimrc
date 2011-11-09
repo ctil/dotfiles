@@ -2,8 +2,19 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Auto execute python scripts using F5
-autocmd BufRead *.py nmap <F5> :!python %<CR>
+" tab navigation like firefox
+:nmap <C-S-tab> :tabprevious<CR>
+:nmap <C-tab> :tabnext<CR>
+:map <C-S-tab> :tabprevious<CR>
+:map <C-tab> :tabnext<CR>
+:imap <C-S-tab> <Esc>:tabprevious<CR>i
+:imap <C-tab> <Esc>:tabnext<CR>i
+
+"mouse visual block (ALT+click for visual block)
+nmap <A-LeftMouse> <LeftMouse><C-V>
+vmap <A-LeftDrag> <LeftDrag>
+imap <A-LeftMouse> <LeftMouse><C-O><C-V>
+vmap <A-LeftMouse> <Esc><LeftMouse><C-V>
 
 "Used for finding tags.  Generate tags using ctags
 set tags=./TAGS,../TAGS,../../TAGS,../../../TAGS,../../../../TAGS,../../../../../TAGS
