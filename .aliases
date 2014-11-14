@@ -5,4 +5,6 @@ alias bbbb="cd ../../../../"
 alias bbbbb="cd ../../../../../"
 
 alias la="ls -la"
+alias ltr="ls -ltr"
+alias chrome="google-chrome-stable"
 alias wk="cd ~/work"
