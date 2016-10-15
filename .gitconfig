@@ -6,3 +6,6 @@
     b = branch
     co = checkout
     st = status
+
+[push]
+    default = simple
