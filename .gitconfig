@@ -1,0 +1,8 @@
+[user]
+    email = ctilleman@users.noreply.github.com
+    name = ctilleman
+
+[alias]
+    b = branch
+    co = checkout
+    st = status
