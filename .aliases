@@ -7,7 +7,6 @@ alias bbbbb="cd ../../../../../"
 alias la="ls -la"
 alias ll="ls -l"
 alias ltr="ls -ltr"
-alias chrome="google-chrome-stable"
 alias wk="cd ~/work"
 
 # Simulate pbpaste/pbcopy
