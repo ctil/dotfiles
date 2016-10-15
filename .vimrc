@@ -1,54 +1,45 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+" Save with spacebar
+map <Space> :wall<CR>
 
-" tab navigation like firefox
-:nmap <C-S-tab> :tabprevious<CR>
-:nmap <C-tab> :tabnext<CR>
-:map <C-S-tab> :tabprevious<CR>
-:map <C-tab> :tabnext<CR>
-:imap <C-S-tab> <Esc>:tabprevious<CR>i
-:imap <C-tab> <Esc>:tabnext<CR>i
-
-"mouse visual block (ALT+click for visual block)
-nmap <A-LeftMouse> <LeftMouse><C-V>
-vmap <A-LeftDrag> <LeftDrag>
-imap <A-LeftMouse> <LeftMouse><C-O><C-V>
-vmap <A-LeftMouse> <Esc><LeftMouse><C-V>
-
-"Used for finding tags.  Generate tags using ctags
-set tags=./TAGS,../TAGS,../../TAGS,../../../TAGS,../../../../TAGS,../../../../../TAGS
-map t <C-]> 
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" Get out of insert mode
+imap jk <Esc>
+imap kj <Esc>
 
 " Make timeout faster (for jk mappings, etc.)
 set timeout timeoutlen=100
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-set backup		" keep a backup file
-endif
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
-set history=50		" keep 50 lines of command line history
-set number		" show line numbers
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+" Keep a backup file
+set backup
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
-" Searching config
-nmap <silent> <C-N> :silent noh<CR> " CTRL+n turns off search highlightin
+" Searching
 set ignorecase
 set smartcase
 set incsearch
+set hlsearch
 
-" In many terminal emulators the mouse works just fine, thus enable it.
+" CTRL+n turns off search highlighting
+nmap <silent> <C-N> :silent noh<CR>
+
+" Tabs and indentation
+filetype plugin indent on
+set cindent
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set autoindent
+
+" Line Numbers
+set number
+
+" Enable mouse
 set mouse=a
+
+" Colors
+set t_Co=256
+colorscheme desert
 
 " Setup auto-completing curly brackets
 inoremap {      {}<Left>
@@ -62,63 +53,25 @@ inoremap (<CR>  (<CR>)<Esc>O
 inoremap ((     (
 inoremap ()     ()
 
-" Setup auto-completing quotes
-" inoremap "      ""<Left>
-" inoremap "<CR>  "<CR>"<Esc>O
-" inoremap ""     "
-" Zenburn color configurations
-" let g:zenburn_high_Contrast=1
-" let g:zenburn_alternate_Visual = 1
+" Install vim-plug with this command:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+" Run :PlugInstall to install plugins
+" Run :PlugClean to remove that are no longer in vimrc
+call plug#begin('~/.vim/plugged')
 
-""colorscheme elflord
-" colorscheme Zenburn2
-set t_Co=256
+" golang
+Plug 'fatih/vim-go'
 
-" Save with spacebar, get out of insert mode
-map <Space> :wall<CR>
-imap jk <Esc>
-imap kj <Esc>
+" Fuzzy file finder
+Plug 'ctrlpvim/ctrlp.vim'
 
-" Quote selected word
-nnoremap co :silent! normal "zyiw<Esc>:let @z="'".@z."'"<CR>cw<c-r>z<Esc>b
-nnoremap cp :silent! normal "zyiw<Esc>:let @z="\"".@z."\""<CR>cw<c-r>z<Esc>b
+call plug#end()
 
-" Nifty menu at bottom of vim window
-set wildmenu
-
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
-
-" Tab and indent stuff
-filetype plugin indent on
-set cindent
-set shiftwidth=4
-set softtabstop=4
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 80 characters.
-  autocmd FileType text setlocal textwidth=80
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
