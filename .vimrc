@@ -53,6 +53,11 @@ inoremap (<CR>  (<CR>)<Esc>O
 inoremap ((     (
 inoremap ()     ()
 
+" Needed for vim-airline
+set laststatus=2
+set noshowmode
+let g:airline_powerline_fonts=1
+
 " Install vim-plug with this command:
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "
@@ -65,6 +70,8 @@ Plug 'fatih/vim-go'
 
 " Fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
