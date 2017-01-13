@@ -1,7 +1,7 @@
 [alias]
-    b = branch
-    co = checkout
-    st = status
+	b = branch
+	co = checkout
+	st = status
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	dt = difftool -d
 
@@ -12,8 +12,8 @@
 	prompt = false
 
 [push]
-    default = simple
+	default = simple
 
 [user]
-    email = ctil@users.noreply.github.com
-    name = ctil
+	email = ctil@users.noreply.github.com
+	name = ctil
