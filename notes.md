@@ -13,3 +13,14 @@ Add this to ~/.ssh/config:
      AddKeysToAgent yes
      UseKeychain yes
      IdentityFile ~/.ssh/id_rsa.home
+
+Install Powerline Fonts
+=======================
+These are needed by the vim-airline plugin. Run these commands:
+
+    git clone https://github.com/powerline/fonts.git
+    cd fonts
+    ./install.sh
+    rm -rf fonts
+    
+Then change terminal to use a powerline font.
