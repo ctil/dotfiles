@@ -1,3 +1,14 @@
+
+SSH Keys
+=========
+Run these commands to generate an ssh key:
+    
+    ssh-keygen -t rsa -b 4096 -C "ctil@users.noreply.github.com" -f ~/.ssh/id_rsa.home
+    eval $(ssh-agent -s)
+    ssh-add ~/.ssh/id_rsa.home
+    
+Then add ~/.ssh/id_rsa.home.pub to GitHub.
+
 Cloning a Repo
 ==============
 After cloning a github repo, run these commands to set username and email:
