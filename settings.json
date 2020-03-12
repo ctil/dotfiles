@@ -1,0 +1,48 @@
+{
+    "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.leader": ",",
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-f>": false,
+    "<C-k>": false
+  },
+  "editor.minimap.enabled": false,
+  "files.autoSave": "afterDelay",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.colorTheme": "Material Theme Palenight High Contrast",
+  "files.associations": {
+    "Dockerfile*": "dockerfile",
+    "Jenkinsfile*": "groovy"
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.idea/**": true
+  },
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "git.confirmSync": false,
+  "terminal.integrated.fontSize": 15,
+  "window.menuBarVisibility": "toggle",
+  "python.jediEnabled": true,
+  "explorer.openEditors.visible": 0,
+  "[python]": {
+    "editor.rulers": [
+        105
+    ],
+    "editor.defaultFormatter": "ms-python.python",
+},
+  "gitlens.views.repositories.location": "scm",
+  "gitlens.views.fileHistory.location": "explorer",
+  "gitlens.views.lineHistory.location": "explorer",
+  "gitlens.views.compare.location": "gitlens",
+  "gitlens.views.search.location": "gitlens",
+  "editor.renderWhitespace": "all",
+  "files.trimTrailingWhitespace": true,
+}
