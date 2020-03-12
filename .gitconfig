@@ -12,7 +12,7 @@
 	prompt = false
 
 [push]
-	default = simple
+	default = current
 
 [user]
 	email = ctil@users.noreply.github.com
