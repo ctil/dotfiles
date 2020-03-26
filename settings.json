@@ -45,4 +45,5 @@
   "gitlens.views.search.location": "gitlens",
   "editor.renderWhitespace": "all",
   "files.trimTrailingWhitespace": true,
+  "extensions.ignoreRecommendations": false,
 }

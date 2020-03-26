@@ -1,3 +1,7 @@
+Dotfiles
+========
+Contains customized configuration files for linux (aliases, vimrc, etc.).
+
 
 SSH Keys
 =========
@@ -11,10 +15,9 @@ Then add ~/.ssh/id_rsa.home.pub to GitHub.
 
 Cloning a Repo
 ==============
-After cloning a github repo, run these commands to set username and email:
+After cloning a github repo, run this command to set username and email:
 
-    git config --local user.email "ctil@users.noreply.github.com"
-    git config --local user.name "ctil"
+    ./git_setup.sh
 
 Mac Setup
 =========
