@@ -11,6 +11,7 @@ alias ltr="ls -ltr"
 # Git
 alias gam="git commit -a --amend --no-edit"
 alias gl1="git log -1"
+alias gfm="git fetch origin master:master"
 
 # Simulate pbpaste/pbcopy if on Linux
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
