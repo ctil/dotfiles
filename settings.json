@@ -1,5 +1,5 @@
 {
-    "vim.insertModeKeyBindings": [
+  "vim.insertModeKeyBindings": [
     {
       "before": ["j", "k"],
       "after": ["<Esc>"]
@@ -14,8 +14,10 @@
   "editor.minimap.enabled": false,
   "files.autoSave": "afterDelay",
   "editor.suggestSelection": "first",
+  "editor.renameOnType": true,
+  "rust-analyzer.files.watcher": "client",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "workbench.colorTheme": "Material Theme Palenight High Contrast",
+  "workbench.colorTheme": "Community Material Theme High Contrast",
   "files.associations": {
     "Dockerfile*": "dockerfile",
     "Jenkinsfile*": "groovy"
@@ -24,26 +26,46 @@
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/node_modules/**": true,
-    "**/.idea/**": true
+    "**/.idea/**": true,
+    "**/target/**": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/target": true
   },
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "git.confirmSync": false,
   "terminal.integrated.fontSize": 15,
-  "window.menuBarVisibility": "toggle",
-  "python.jediEnabled": true,
+  "editor.fontSize": 14,
   "explorer.openEditors.visible": 0,
   "[python]": {
-    "editor.rulers": [
-        105
-    ],
-    "editor.defaultFormatter": "ms-python.python",
-},
+    "editor.rulers": [105],
+    "editor.defaultFormatter": "ms-python.python"
+  },
   "gitlens.views.repositories.location": "scm",
   "gitlens.views.fileHistory.location": "explorer",
   "gitlens.views.lineHistory.location": "explorer",
   "gitlens.views.compare.location": "gitlens",
   "gitlens.views.search.location": "gitlens",
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "files.trimTrailingWhitespace": true,
   "extensions.ignoreRecommendations": false,
+  "window.zoomLevel": 0,
+  "vetur.useWorkspaceDependencies": true,
+  "prettier.packageManager": "yarn",
+  "eslint.packageManager": "yarn",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "rust-analyzer.inlayHints.enable": false,
+  "rust-analyzer.checkOnSave.allTargets": false,
+  "rust-analyzer.files.exclude": [
+    "target",
+    "node_modules"
+  ]
 }
