@@ -1,0 +1,9 @@
+# Add custom file types
+--type-add
+rpc:"*.rpc"
+
+# Ignore certain folders
+--glob
+!target/*
+
+--smart-case
