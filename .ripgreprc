@@ -1,6 +1,6 @@
 # Add custom file types
 --type-add
-rpc:"*.rpc"
+rpc:*.rpc
 
 # Ignore certain folders
 --glob
