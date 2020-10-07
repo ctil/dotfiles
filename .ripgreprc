@@ -2,8 +2,15 @@
 --type-add
 rpc:*.rpc
 
+--type-add
+vue:*.vue
+
 # Ignore certain folders
 --glob
 !target/*
 
 --smart-case
+
+# Don't let ripgrep print really long lines to my terminal, and show a preview.
+--max-columns=200
+--max-columns-preview
