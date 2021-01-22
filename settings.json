@@ -14,7 +14,7 @@
   "editor.minimap.enabled": false,
   "files.autoSave": "afterDelay",
   "editor.suggestSelection": "first",
-  "editor.renameOnType": true,
+  "editor.linkedEditing": true,
   "rust-analyzer.files.watcher": "client",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
@@ -94,4 +94,5 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "files.insertFinalNewline": true,
 }
