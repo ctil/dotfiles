@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cargo rust docker fzf)
+plugins=(git cargo rust docker fzf history)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,6 +100,11 @@ compinit
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# History settings
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+
 
 export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 

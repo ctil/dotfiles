@@ -20,7 +20,8 @@
   "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
   "files.associations": {
     "Dockerfile*": "dockerfile",
-    "Jenkinsfile*": "groovy"
+    "Jenkinsfile*": "groovy",
+    "*html.hbs": "html"
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -62,6 +63,7 @@
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  // NOTE: this causes issues with live share
   "editor.formatOnSave": true,
   "[seed.sql]": {
     "editor.formatOnSave": false,
@@ -83,4 +85,13 @@
     "HTML (Eex)",
     "plist"
   ],
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
