@@ -12,12 +12,12 @@
     "<C-k>": false
   },
   "editor.minimap.enabled": false,
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "onFocusChange",
   "editor.suggestSelection": "first",
   "editor.linkedEditing": true,
   "rust-analyzer.files.watcher": "client",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
+  "workbench.colorTheme": "Material Theme Palenight High Contrast",
   "files.associations": {
     "Dockerfile*": "dockerfile",
     "Jenkinsfile*": "groovy",
@@ -56,9 +56,7 @@
   // NOTE: this causes issues with live share
   "files.trimTrailingWhitespace": true,
   "extensions.ignoreRecommendations": false,
-  "window.zoomLevel": 0,
   "vetur.useWorkspaceDependencies": true,
-  "prettier.packageManager": "yarn",
   "eslint.packageManager": "yarn",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -70,9 +68,24 @@
     "files.trimTrailingWhitespace": false,
     "editor.insertSpaces": false
   },
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+  },
+  "[hbs]": {
+    "editor.formatOnSave": false,
+  },
   "rust-analyzer.inlayHints.enable": false,
-  "rust-analyzer.checkOnSave.allTargets": false,
-  "rust-analyzer.files.exclude": ["target", "node_modules"],
+  "rust-analyzer.checkOnSave.allTargets": true,
+  "rust-analyzer.files.excludeDirs": [
+    "target",
+    "node_modules",
+    "portals",
+    "codepipeline",
+    "support"
+  ],
   "rust-client.engine": "rust-analyzer",
   "liveshare.presence": true,
   "auto-close-tag.activationOnLanguage": [
@@ -95,4 +108,19 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "files.insertFinalNewline": true,
+  "rust-analyzer.diagnostics.enableExperimental": false,
+  "rust-analyzer.procMacro.enable": false,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "search.exclude": {
+    "**/proto": true,
+  },
+  "[mjml]": {
+    "editor.defaultFormatter": "attilabuti.vscode-mjml"
+  },
+  "vim.useSystemClipboard": true,
 }
