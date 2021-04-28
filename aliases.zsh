@@ -20,6 +20,6 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     alias pbpaste="xclip -selection clipboard -o"
 fi
 
-alias sand='cd /Users/colin/work/sandbox && cargo run'
-alias mr='cd /Users/colin/work/monorepo'
+alias mr='cd ~/work/monorepo'
 alias rust="evcxr"
+alias n="~/notify_done.sh"
