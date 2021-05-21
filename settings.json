@@ -123,4 +123,6 @@
     "editor.defaultFormatter": "attilabuti.vscode-mjml"
   },
   "vim.useSystemClipboard": true,
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "vetur.format.defaultFormatter.ts": "prettier-tslint",
 }
