@@ -121,17 +121,8 @@
   },
   {
     "key": "cmd+w",
-    "command": "workbench.action.closeWindow",
-    "when": "!editorIsOpen && !multipleEditorGroups"
-  },
-  {
-    "key": "cmd+w",
     "command": "-workbench.action.closeWindow",
     "when": "!editorIsOpen && !multipleEditorGroups"
-  },
-  {
-    "key": "ctrl+w",
-    "command": "extension.vim_ctrl+w"
   },
   {
     "key": "ctrl+shift+f",
@@ -160,5 +151,13 @@
     "key": "shift+cmd+f",
     "command": "-workbench.view.search",
     "when": "workbench.view.search.active"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeActiveEditor"
   }
 ]

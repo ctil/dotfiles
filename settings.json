@@ -9,15 +9,37 @@
   "vim.handleKeys": {
     "<C-d>": true,
     "<C-f>": false,
-    "<C-k>": false
+    "<C-k>": false,
+    "<C-w>": false
   },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "w"],
+      "after": [],
+      "commands": [
+        {
+          "command": "extension.vim_ctrl+w",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.closeActiveEditor",
+          "args": []
+        }
+      ]
+    }
+  ],
   "editor.minimap.enabled": false,
   "files.autoSave": "onFocusChange",
   "editor.suggestSelection": "first",
   "editor.linkedEditing": true,
   "rust-analyzer.files.watcher": "client",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "workbench.colorTheme": "Material Theme Palenight High Contrast",
+  "workbench.colorTheme": "Solarized Light",
   "files.associations": {
     "Dockerfile*": "dockerfile",
     "Jenkinsfile*": "groovy",
@@ -72,10 +94,10 @@
     "editor.insertSpaces": true,
     "editor.formatOnSave": false,
     "editor.tabSize": 2,
-    "editor.autoIndent": "advanced",
+    "editor.autoIndent": "advanced"
   },
   "[hbs]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   "rust-analyzer.inlayHints.enable": false,
   "rust-analyzer.checkOnSave.allTargets": true,
@@ -84,7 +106,8 @@
     "node_modules",
     "portals",
     "codepipeline",
-    "support"
+    "support",
+    "proto"
   ],
   "rust-client.engine": "rust-analyzer",
   "liveshare.presence": true,
@@ -110,19 +133,17 @@
   "files.insertFinalNewline": true,
   "rust-analyzer.diagnostics.enableExperimental": false,
   "rust-analyzer.procMacro.enable": false,
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "search.exclude": {
-    "**/proto": true,
+    "**/proto": true
   },
   "[mjml]": {
     "editor.defaultFormatter": "attilabuti.vscode-mjml"
   },
   "vim.useSystemClipboard": true,
-  "vetur.format.defaultFormatter.js": "prettier-eslint",
-  "vetur.format.defaultFormatter.ts": "prettier-tslint",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

@@ -9,6 +9,10 @@ imap kj <Esc>
 let maplocalleader = ","
 let mapleader = ","
 
+" Remap change window
+nnoremap <leader>w <C-w>
+
+
 "  Use tab for completor
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -49,8 +53,8 @@ set number
 set mouse=a
 
 " FZF settings
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>f :Files<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>f :Files<CR>
 
 " Switch to last edited buffer
 " nmap <C-e> :e#<CR>
@@ -76,7 +80,7 @@ endif
 tnoremap <Esc> <C-\><C-n>
 
 " Open new terminal
-map <Leader>t :terminal ++rows=10 <CR>
+map <leader>t :terminal ++rows=10 <CR>
 
 " Open splits on the bottom and right by default
 set splitbelow
