@@ -8,6 +8,7 @@ alias wk="cd ~/work"
 
 alias ltr="ls -ltr"
 alias f="find . -name"
+alias j="just"
 
 # Git
 alias gam="git commit -a --amend --no-edit"
@@ -22,4 +23,4 @@ fi
 
 alias mr='cd ~/work/monorepo'
 alias rust="evcxr"
-alias n="~/notify_done.sh"
+alias notify="~/notify_done.sh"
