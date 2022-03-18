@@ -40,7 +40,7 @@
   "editor.suggestSelection": "first",
   "editor.linkedEditing": true,
   "rust-analyzer.files.watcher": "client",
-  "workbench.colorTheme": "Solarized Light",
+  "workbench.colorTheme": "Material Theme Palenight High Contrast",
   "files.associations": {
     "Dockerfile*": "dockerfile",
     "Jenkinsfile*": "groovy",
