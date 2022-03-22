@@ -14,9 +14,9 @@ nnoremap <leader>w <C-w>
 
 
 "  Use tab for completor
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
 " Make timeout faster (for jk mappings, etc.)
 " set timeout timeoutlen=100
@@ -138,7 +138,7 @@ Plug 'jnurmine/Zenburn'
 
 " Autocomplete for Python
 " pip install jedi to enable in virtualenvs
-Plug 'maralla/completor.vim'
+" Plug 'maralla/completor.vim'
 " Plug 'davidhalter/jedi-vim'
 
 
