@@ -128,3 +128,16 @@ if [ -f '/Users/colin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/col
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Postgres lib
+PQ_LIB_DIR="/opt/homebrew/opt/libpq/lib"
+
+# Openssl lib
+export OPENSSL_ROOT_DIR="/opt/homebrew/opt/openssl@1.1"
+export OPENSSL_LIB_DIR="$OPENSSL_ROOT_DIR/lib"
+export OPENSSL_INCLUDE_DIR="$OPENSSL_ROOT_DIR/include"
+export OPENSSL_BIN_DIR="$OPENSSL_ROOT_DIR/bin"
+export PATH="$OPENSSL_BIN_DIR:$PATH"
+export CFLAGS="-I$OPENSSL_INCLUDE_DIR"
+export CPPFLAGS="-I$OPENSSL_INCLUDE_DIR"
+export LDFLAGS="-L$OPENSSL_LIB_DIR"Tools
