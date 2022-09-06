@@ -119,6 +119,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Created by `userpath` on 2020-04-07 16:34:46
 export PATH="$PATH:/Users/colin/.local/bin:/opt/homebrew/bin"
 
+export PATH="$PATH:/Users/colin/.nvm/versions/node/v14.19.1/bin"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/colin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colin/google-cloud-sdk/path.zsh.inc'; fi
 

@@ -22,5 +22,5 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
 fi
 
 alias mr='cd ~/work/monorepo'
-alias rust="evcxr"
 alias notify="~/notify_done.sh"
+alias vi="nvim"
