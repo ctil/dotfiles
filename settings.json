@@ -15,8 +15,16 @@
       "commands": ["workbench.action.terminal.focus"]
     },
     {
-      "before": ["<leader>", "e"],
+      "before": ["]", "d"],
       "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["]", "q"],
+      "commands": ["search.action.focusNextSearchResult"]
+    },
+    {
+      "before": ["[", "q"],
+      "commands": ["search.action.focusPreviousSearchResult"]
     }
   ],
   "vim.textwidth": 100,
@@ -159,7 +167,7 @@
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.inlayHints.typeHints.enable": false,
   "rust-analyzer.checkOnSave.command": "clippy",
-  "rust-analyzer.checkOnSave.enable": true,
+  "rust-analyzer.checkOnSave.enable": false,
   "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
   "workbench.preferredLightColorTheme": "Solarized Light",
   "workbench.preferredDarkColorTheme": "Community Material Theme Palenight High Contrast",
@@ -168,5 +176,6 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.stickyScroll.enabled": true
+  "editor.stickyScroll.enabled": true,
+  "vim.highlightedyank.enable": true
 }
