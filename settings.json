@@ -25,6 +25,22 @@
     {
       "before": ["[", "q"],
       "commands": ["search.action.focusPreviousSearchResult"]
+    },
+    {
+      "before": ["]", "b"],
+      "commands": ["workbench.action.nextEditorInGroup"]
+    },
+    {
+      "before": ["[", "b"],
+      "commands": ["workbench.action.previousEditorInGroup"]
+    },
+    {
+      "before": ["]", "e"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["[", "e"],
+      "commands": ["editor.action.moveLinesUpAction"]
     }
   ],
   "vim.textwidth": 100,
@@ -177,5 +193,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.stickyScroll.enabled": true,
-  "vim.highlightedyank.enable": true
+  "vim.highlightedyank.enable": true,
+  "vsnotes.defaultNotePath": "~/notes",
+  "vsnotes.defaultNoteTitle": "{title}.{ext}",
+  "playwright.reuseBrowser": false
 }
