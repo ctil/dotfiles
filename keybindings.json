@@ -111,15 +111,6 @@
     "command": "-workbench.action.files.save"
   },
   {
-    "key": "ctrl+w",
-    "command": "-workbench.action.switchWindow"
-  },
-  {
-    "key": "ctrl+w",
-    "command": "-extension.vim_ctrl+w",
-    "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
-  },
-  {
     "key": "cmd+w",
     "command": "-workbench.action.closeWindow",
     "when": "!editorIsOpen && !multipleEditorGroups"
@@ -151,10 +142,6 @@
     "key": "shift+cmd+f",
     "command": "-workbench.view.search",
     "when": "workbench.view.search.active"
-  },
-  {
-    "key": "ctrl+w",
-    "command": "workbench.action.closeActiveEditor"
   },
   {
     "key": "cmd+w",
