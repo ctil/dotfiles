@@ -143,3 +143,7 @@ export PATH="$OPENSSL_BIN_DIR:$PATH"
 export CFLAGS="-I$OPENSSL_INCLUDE_DIR"
 export CPPFLAGS="-I$OPENSSL_INCLUDE_DIR"
 export LDFLAGS="-L$OPENSSL_LIB_DIR"Tools
+
+
+zoxide_cmd=`which zoxide`
+if ! [[ "$zoxide_cmd" =~ "not found" ]]; then eval "$(zoxide init zsh)"; fi
