@@ -166,9 +166,9 @@
     "support"
   ],
   "liveshare.presence": true,
-  // "search.exclude": {
-  //   "libraries/backend-protos/**": true
-  // },
+  "search.exclude": {
+    "libraries/backend-protos/**": true
+  },
   "[mjml]": {
     "editor.defaultFormatter": "mjmlio.vscode-mjml"
   },
@@ -189,7 +189,7 @@
   "rust-analyzer.checkOnSave.enable": false,
   "workbench.colorTheme": "Atom One Dark",
   "workbench.preferredLightColorTheme": "Solarized Light",
-  "workbench.preferredDarkColorTheme": "Community Material Theme Palenight High Contrast",
+  "workbench.preferredDarkColorTheme": "Atom One Dark",
   "githubPullRequests.pullBranch": "never",
   "editor.lineNumbers": "relative",
   "[json]": {
@@ -201,5 +201,14 @@
   "vsnotes.defaultNoteTitle": "{title}.{ext}",
   "playwright.reuseBrowser": false,
   "debug.allowBreakpointsEverywhere": true,
-  "rust-analyzer.procMacro.enable": false
+  "rust-analyzer.procMacro.enable": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.autoClosingQuotes": "never",
+  "html.autoClosingTags": false,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false
+  }
 }
