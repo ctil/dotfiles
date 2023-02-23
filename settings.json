@@ -78,6 +78,15 @@
           "args": []
         }
       ]
+    },
+    // This works around a bug with undo/redo
+    {
+      "before": ["u"],
+      "commands": ["undo"]
+    },
+    {
+      "before": ["c-r"],
+      "commands": ["redo"]
     }
   ],
   "editor.minimap.enabled": false,
@@ -167,7 +176,7 @@
   ],
   "liveshare.presence": true,
   "search.exclude": {
-    "libraries/backend-protos/**": true
+    "libraries/backend-protos/**": false
   },
   "[mjml]": {
     "editor.defaultFormatter": "mjmlio.vscode-mjml"
@@ -176,17 +185,16 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "rust-analyzer.checkOnSave.allTargets": false,
+  "rust-analyzer.checkOnSave.enable": false,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
   "python.defaultInterpreterPath": "/usr/local/bin/python3",
   "python.linting.mypyEnabled": true,
-  "vetur.completion.autoImport": false,
   "rust-analyzer.diagnostics.experimental.enable": false,
   "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.inlayHints.typeHints.enable": false,
   "rust-analyzer.checkOnSave.command": "clippy",
-  "rust-analyzer.checkOnSave.enable": false,
   "workbench.colorTheme": "Atom One Dark",
   "workbench.preferredLightColorTheme": "Solarized Light",
   "workbench.preferredDarkColorTheme": "Atom One Dark",
@@ -201,7 +209,6 @@
   "vsnotes.defaultNoteTitle": "{title}.{ext}",
   "playwright.reuseBrowser": false,
   "debug.allowBreakpointsEverywhere": true,
-  "rust-analyzer.procMacro.enable": false,
   "editor.inlineSuggest.enabled": true,
   "editor.autoClosingQuotes": "never",
   "html.autoClosingTags": false,
@@ -210,5 +217,6 @@
     "yaml": false,
     "plaintext": false,
     "markdown": false
-  }
+  },
+  "cSpell.diagnosticLevel": "Hint"
 }
