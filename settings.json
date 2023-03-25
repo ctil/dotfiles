@@ -7,8 +7,12 @@
   ],
   "vim.normalModeKeyBindings": [
     {
-      "before": ["<leader>", "f"],
-      "commands": ["workbench.view.search"]
+      "before": ["<leader>", "f", "g"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
     },
     {
       "before": ["<leader>", "t"],
@@ -50,7 +54,7 @@
   "vim.textwidth": 100,
   "vim.smartRelativeLine": true,
   "vim.useSystemClipboard": true,
-  "vim.leader": ",",
+  "vim.leader": " ",
   "vim.surround": true,
   "vim.handleKeys": {
     "<C-d>": true,
@@ -70,7 +74,7 @@
       ]
     },
     {
-      "before": ["<leader>", "q"],
+      "before": ["<leader>", "x"],
       "after": [],
       "commands": [
         {
@@ -121,7 +125,8 @@
   "explorer.openEditors.visible": 0,
   "[python]": {
     "editor.rulers": [105],
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnType": true
   },
   "extensions.ignoreRecommendations": false,
   "editor.renderWhitespace": "all",
@@ -131,10 +136,6 @@
   "files.insertFinalNewline": true,
   "editor.formatOnSave": true,
 
-  "vetur.useWorkspaceDependencies": true,
-  "vetur.dev.vlsPath": "node_modules/.bin/vls",
-  "vetur.validation.templateProps": true,
-  "vetur.validation.interpolation": true,
   "eslint.packageManager": "yarn",
   "eslint.validate": ["vue", "typescript"],
   "[vue]": {
@@ -155,6 +156,9 @@
     "files.trimTrailingWhitespace": false,
     "editor.insertSpaces": false
   },
+  "[sql]": {
+    "editor.formatOnSave": false
+  },
   "[yaml]": {
     "editor.insertSpaces": true,
     "editor.formatOnSave": false,
@@ -172,7 +176,9 @@
     "node_modules",
     "portals",
     "codepipeline",
-    "support"
+    "support",
+    "images",
+    "scripts"
   ],
   "liveshare.presence": true,
   "search.exclude": {
@@ -184,18 +190,17 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "rust-analyzer.checkOnSave.allTargets": false,
-  "rust-analyzer.checkOnSave.enable": false,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
   "python.defaultInterpreterPath": "/usr/local/bin/python3",
   "python.linting.mypyEnabled": true,
   "rust-analyzer.diagnostics.experimental.enable": false,
+  // https://github.com/rust-lang/rust-analyzer/issues/14259
+  "rust-analyzer.diagnostics.disabled": ["unresolved-method"],
   "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.inlayHints.typeHints.enable": false,
-  "rust-analyzer.checkOnSave.command": "clippy",
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "Gruvbox Dark (Medium)",
   "workbench.preferredLightColorTheme": "Solarized Light",
   "workbench.preferredDarkColorTheme": "Atom One Dark",
   "githubPullRequests.pullBranch": "never",
@@ -218,5 +223,10 @@
     "plaintext": false,
     "markdown": false
   },
-  "cSpell.diagnosticLevel": "Hint"
+  "cSpell.diagnosticLevel": "Hint",
+  "rust-analyzer.check.command": "check",
+  "rust-analyzer.completion.limit": 15,
+  "rust-analyzer.debug.engine": "vadimcn.vscode-lldb",
+  "rust-analyzer.check.allTargets": true,
+  "rust-analyzer.checkOnSave": false
 }

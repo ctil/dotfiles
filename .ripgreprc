@@ -6,8 +6,14 @@ rpc:*.rpc
 vue:*.vue
 
 # Ignore certain folders
---glob
+-g
 !target/*
+
+-g
+!portals/{management,customer}/src/graph/*
+
+-g
+!*graphql-schema*
 
 --smart-case
 

@@ -121,6 +121,18 @@
     "when": "terminalFocus && terminalProcessSupported && terminalProcessSupported && terminalTextSelected"
   },
   {
+    "key": "ctrl+j",
+    "command": "search.action.focusNextSearchResult"
+    // "command": "history.showNext"
+    // "when": "searchInputBoxFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "search.action.focusPreviousSearchResult"
+    // "command": "history.showPrevious"
+    // "when": "searchInputBoxFocus"
+  },
+  {
     "key": "shift+cmd+f",
     "command": "-workbench.action.terminal.searchWorkspace",
     "when": "terminalFocus && terminalProcessSupported && terminalProcessSupported && terminalTextSelected"

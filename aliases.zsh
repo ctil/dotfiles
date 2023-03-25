@@ -7,7 +7,7 @@ alias bbbbb="cd ../../../../../"
 alias wk="cd ~/work"
 
 alias ltr="ls -ltr"
-alias f="find . -name"
+alias f="rg --files -g "
 alias j="just"
 
 # Git
