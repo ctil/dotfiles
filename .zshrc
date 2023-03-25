@@ -109,7 +109,7 @@ setopt hist_ignore_all_dups
 export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
 # Use ag for fzf search
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
