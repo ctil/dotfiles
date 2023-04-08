@@ -9,6 +9,7 @@ alias wk="cd ~/work"
 alias ltr="ls -ltr"
 alias f="rg --files -g "
 alias j="just"
+alias c="clear"
 
 # Git
 alias gam="git commit -a --amend --no-edit"

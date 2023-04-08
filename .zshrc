@@ -147,6 +147,9 @@ export LDFLAGS="-L$OPENSSL_LIB_DIR"Tools
 # PYTHON
 export PATH="$PATH:/Users/colin/Library/Python/3.9/bin/"
 
+# Make sure the docker compose project name is consistent
+export COMPOSE_PROJECT_NAME=monorepo
+
 
 zoxide_cmd=`which zoxide`
 if ! [[ "$zoxide_cmd" =~ "not found" ]]; then eval "$(zoxide init zsh)"; fi
