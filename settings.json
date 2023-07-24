@@ -7,12 +7,32 @@
   ],
   "vim.normalModeKeyBindings": [
     {
+      "before": ["<leader>", "l", "a"],
+      "commands": ["problems.action.showQuickFixes"]
+    },
+    {
       "before": ["<leader>", "f", "g"],
       "commands": ["workbench.action.findInFiles"]
     },
     {
       "before": ["<leader>", "f", "f"],
       "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "R"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "lr"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "after": ["<C-6>"]
+    },
+    {
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.action.files.save"]
     },
     {
       "before": ["<leader>", "t"],
@@ -138,9 +158,6 @@
 
   "eslint.packageManager": "yarn",
   "eslint.validate": ["vue", "typescript"],
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
@@ -200,7 +217,7 @@
   "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.inlayHints.typeHints.enable": false,
-  "workbench.colorTheme": "Gruvbox Dark (Medium)",
+  "workbench.colorTheme": "Visual Studio Dark",
   "workbench.preferredLightColorTheme": "Solarized Light",
   "workbench.preferredDarkColorTheme": "Atom One Dark",
   "githubPullRequests.pullBranch": "never",

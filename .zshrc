@@ -10,6 +10,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
+export PATH="$PATH:/Users/colin/.local/bin:/opt/homebrew/bin"
+export PATH="$PATH:/Users/colin/.nvm/versions/node/v16.19.0/bin"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -115,11 +118,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
-# Created by `userpath` on 2020-04-07 16:34:46
-export PATH="$PATH:/Users/colin/.local/bin:/opt/homebrew/bin"
-
-export PATH="$PATH:/Users/colin/.nvm/versions/node/v16.19.0/bin"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/colin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colin/google-cloud-sdk/path.zsh.inc'; fi

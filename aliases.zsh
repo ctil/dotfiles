@@ -25,3 +25,5 @@ fi
 alias mr='cd ~/work/monorepo'
 alias notify="~/notify_done.sh"
 alias vi="nvim"
+
+alias dm="diesel migration"
