@@ -12,6 +12,7 @@ ZSH_THEME="robbyrussell"
 
 export PATH="$PATH:/Users/colin/.local/bin:/opt/homebrew/bin"
 export PATH="$PATH:/Users/colin/.nvm/versions/node/v16.19.0/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -114,6 +115,7 @@ export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 # Use ag for fzf search
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--layout reverse"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -125,9 +127,15 @@ if [ -f '/Users/colin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colin/goo
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/colin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/colin/google-cloud-sdk/completion.zsh.inc'; fi
 
+# Lazy load nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm () {
+    unset -f nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # Load nvm
+    nvm $@ # Copy arguments after nvm
+}
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" # Load nvm bash_completion
+
 
 # Postgres lib
 PQ_LIB_DIR="/opt/homebrew/opt/libpq/lib"
@@ -151,3 +159,9 @@ export COMPOSE_PROJECT_NAME=monorepo
 
 zoxide_cmd=`which zoxide`
 if ! [[ "$zoxide_cmd" =~ "not found" ]]; then eval "$(zoxide init zsh)"; fi
+
+# Git branch fuzzy search
+unalias gc
+gc() {
+ git checkout "$(git branch | fzf| sed 's/^[ *]*//')"
+}

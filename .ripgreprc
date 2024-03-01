@@ -15,7 +15,7 @@ vue:*.vue
 -g
 !*graphql-schema*
 
---smart-case
+# --smart-case
 
 # Don't let ripgrep print really long lines to my terminal, and show a preview.
 --max-columns=200

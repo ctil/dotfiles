@@ -217,7 +217,6 @@
   "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.inlayHints.typeHints.enable": false,
-  "workbench.colorTheme": "Visual Studio Dark",
   "workbench.preferredLightColorTheme": "Solarized Light",
   "workbench.preferredDarkColorTheme": "Atom One Dark",
   "githubPullRequests.pullBranch": "never",
@@ -241,9 +240,12 @@
     "markdown": false
   },
   "cSpell.diagnosticLevel": "Hint",
-  "rust-analyzer.check.command": "check",
   "rust-analyzer.completion.limit": 15,
   "rust-analyzer.debug.engine": "vadimcn.vscode-lldb",
   "rust-analyzer.check.allTargets": true,
-  "rust-analyzer.checkOnSave": false
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.checkOnSave": true,
+  "rust-analyzer.cargo.extraArgs": ["--target-dir", "./rust-analyzer-target"],
+  "workbench.colorTheme": "Atom One Dark",
+  "lldb.suppressUpdateNotifications": true
 }
