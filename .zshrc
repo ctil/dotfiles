@@ -120,13 +120,6 @@ export FZF_DEFAULT_OPTS="--layout reverse"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/colin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colin/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/colin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/colin/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Lazy load nvm
 export NVM_DIR="$HOME/.nvm"
 nvm () {
@@ -151,7 +144,7 @@ export CPPFLAGS="-I$OPENSSL_INCLUDE_DIR"
 export LDFLAGS="-L$OPENSSL_LIB_DIR"Tools
 
 # PYTHON
-export PATH="$PATH:/Users/colin/Library/Python/3.9/bin/"
+export PATH="$PATH:${HOME}/Library/Python/3.9/bin/"
 
 # Make sure the docker compose project name is consistent
 export COMPOSE_PROJECT_NAME=monorepo
