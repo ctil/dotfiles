@@ -11,7 +11,8 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 export PATH="$PATH:/Users/colin/.local/bin:/opt/homebrew/bin"
-export PATH="$PATH:/Users/colin/.nvm/versions/node/v16.19.0/bin"
+NPM_DIR=`npm config get prefix`
+export PATH="$PATH:$NPM_DIR/bin"
 export PATH="$PATH:/usr/local/go/bin"
 
 # Set list of themes to pick from when loading at random
