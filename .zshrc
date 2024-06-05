@@ -77,6 +77,22 @@ plugins=(git rust docker fzf history tmux)
 
 source $ZSH/oh-my-zsh.sh
 
+# Override the oh-my-zsh git plugin function that I used in aliases like "gcm"
+function git_main_branch() {
+  command git rev-parse --git-dir &>/dev/null || return
+  local ref
+  for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk,mainline,default,master,stable}; do
+    if command git show-ref -q --verify $ref; then
+      echo ${ref:t}
+      return 0
+    fi
+  done
+
+  # If no main branch was found, fall back to master but return error
+  echo master
+  return 1
+}
+
 # Enable completions
 compinit
 
