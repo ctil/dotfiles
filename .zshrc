@@ -148,7 +148,7 @@ nvm () {
 
 
 # Postgres lib
-PQ_LIB_DIR="/opt/homebrew/opt/libpq/lib"
+export PQ_LIB_DIR="/opt/homebrew/opt/libpq/lib"
 
 # Openssl lib
 export OPENSSL_ROOT_DIR="/opt/homebrew/opt/openssl@1.1"

@@ -11,12 +11,24 @@
       "commands": ["problems.action.showQuickFixes"]
     },
     {
-      "before": ["<leader>", "f", "g"],
-      "commands": ["workbench.action.findInFiles"]
+      "before": ["<leader>", "v"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["find-it-faster.findWithinFiles"]
     },
     {
       "before": ["<leader>", "f", "f"],
       "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "<space>"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "g", "r"],
+      "commands": ["git.revertSelectedRanges"]
     },
     {
       "before": ["<leader>", "R"],
@@ -94,6 +106,46 @@
       ]
     },
     {
+      "before": ["<leader>", "R"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.action.rename",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["]", "h"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.editor.nextChange",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["[", "h"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.editor.previousChange",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["K"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.action.showHover",
+          "args": []
+        }
+      ]
+    },
+    {
       "before": ["<leader>", "x"],
       "after": [],
       "commands": [
@@ -142,7 +194,7 @@
   "git.confirmSync": false,
   "terminal.integrated.fontSize": 15,
   "editor.fontSize": 14,
-  "explorer.openEditors.visible": 0,
+  "explorer.openEditors.visible": 1,
   "[python]": {
     "editor.rulers": [105],
     "editor.defaultFormatter": "ms-python.python",
@@ -150,13 +202,10 @@
   },
   "extensions.ignoreRecommendations": false,
   "editor.renderWhitespace": "all",
-
   // Autoformatting stuff that has caused issues with live share in the past
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "editor.formatOnSave": true,
-
-  "eslint.packageManager": "yarn",
   "eslint.validate": ["vue", "typescript"],
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -246,6 +295,12 @@
   "rust-analyzer.check.command": "clippy",
   "rust-analyzer.checkOnSave": true,
   "rust-analyzer.cargo.extraArgs": ["--target-dir", "./rust-analyzer-target"],
+  "lldb.suppressUpdateNotifications": true,
+  "cursor.cpp.disabledLanguages": ["yaml", "plaintext", "markdown", "json"],
+  "find-it-faster.general.useTerminalInEditor": true,
+  "find-it-faster.general.killTerminalAfterUse": false,
   "workbench.colorTheme": "Atom One Dark",
-  "lldb.suppressUpdateNotifications": true
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

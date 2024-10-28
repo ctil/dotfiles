@@ -104,8 +104,8 @@
   },
   {
     "key": "cmd+w",
-    "command": "-workbench.action.closeWindow",
-    "when": "!editorIsOpen && !multipleEditorGroups"
+    "command": "workbench.action.closeActiveEditor"
+    // "when": "!editorIsOpen && !multipleEditorGroups"
   },
   {
     "key": "ctrl+shift+f",
@@ -132,11 +132,11 @@
     // "command": "history.showPrevious"
     // "when": "searchInputBoxFocus"
   },
-  {
-    "key": "shift+cmd+f",
-    "command": "-workbench.action.terminal.searchWorkspace",
-    "when": "terminalFocus && terminalProcessSupported && terminalProcessSupported && terminalTextSelected"
-  },
+  // {
+  //   "key": "shift+cmd+f",
+  //   "command": "-workbench.action.terminal.searchWorkspace",
+  //   "when": "terminalFocus && terminalProcessSupported && terminalProcessSupported && terminalTextSelected"
+  // },
   {
     "key": "ctrl+shift+f",
     "command": "workbench.view.search",
@@ -144,7 +144,7 @@
   },
   {
     "key": "shift+cmd+f",
-    "command": "-workbench.view.search",
+    "command": "workbench.view.search",
     "when": "workbench.view.search.active"
   },
   {
