@@ -282,12 +282,6 @@
   "editor.inlineSuggest.enabled": true,
   "editor.autoClosingQuotes": "never",
   "html.autoClosingTags": false,
-  "github.copilot.enable": {
-    "*": true,
-    "yaml": false,
-    "plaintext": false,
-    "markdown": false
-  },
   "cSpell.diagnosticLevel": "Hint",
   "rust-analyzer.completion.limit": 15,
   "rust-analyzer.debug.engine": "vadimcn.vscode-lldb",

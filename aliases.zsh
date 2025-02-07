@@ -22,7 +22,7 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     alias pbpaste="xclip -selection clipboard -o"
 fi
 
-alias mr='cd ~/work/monorepo'
+alias mr='cd ~/work/monorepo && nvm use'
 alias notify="~/notify_done.sh"
 alias vi="nvim"
 
