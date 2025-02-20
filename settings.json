@@ -296,5 +296,6 @@
   "workbench.colorTheme": "Atom One Dark",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "github.copilot.nextEditSuggestions.enabled": true
 }

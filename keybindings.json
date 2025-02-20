@@ -16,6 +16,14 @@
     "when": "editorTextFocus && vim.active && vim.use<D-right> && !inDebugRepl && vim.mode != 'Insert'"
   },
   {
+    "key": "ctrl+h",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.nextEditor"
+  },
+  {
     "key": "cmd+right",
     "command": "-workbench.action.terminal.sendSequence",
     "when": "terminalFocus"
