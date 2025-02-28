@@ -1,0 +1,5 @@
+# Map cmd+p to ctrl+p for use in Neovim
+keybind = super+p=text:\x10
+#theme = Atom
+theme = tokyonight
+font-size = 16
