@@ -1,5 +1,9 @@
 # Map cmd+p to ctrl+p for use in Neovim
 keybind = super+p=text:\x10
-#theme = Atom
+
+# Some other favorite themes: Atom, catppuccin-frappe
 theme = tokyonight
 font-size = 16
+
+# No ligatures
+font-feature = -calt, -liga, -dlig
