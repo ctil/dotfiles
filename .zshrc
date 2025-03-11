@@ -8,11 +8,12 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 export PATH="$PATH:/Users/colin/.local/bin:/opt/homebrew/bin"
-NPM_DIR=`npm config get prefix`
-export PATH="$PATH:$NPM_DIR/bin"
+#NPM_DIR=`npm config get prefix`
+#export PATH="$PATH:$NPM_DIR/bin"
 export PATH="$PATH:/usr/local/go/bin"
 
 # Set list of themes to pick from when loading at random
@@ -175,3 +176,5 @@ unalias gc
 gc() {
  git checkout "$(git branch | fzf| sed 's/^[ *]*//')"
 }
+
+eval "$(starship init zsh)"

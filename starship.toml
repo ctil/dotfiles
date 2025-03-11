@@ -1,0 +1,59 @@
+add_newline = false
+
+format = """
+$username\
+$hostname\
+$localip\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$fill\
+$time\
+$docker_context\
+$memory_usage\
+$env_var\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$status\
+$os\
+$container\
+$shell\
+$character
+"""
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+use_12hr = true
+style = "bright-black"
+format = ' [$time]($style)'
+
+[git_status]
+modified = "~"
+ahead = ""
+behind = ""
+style = "bright-yellow"
+
+[git_branch]
+symbol = " "
+style = "bright-red"
+format = '[$symbol$branch(:$remote_branch)]($style) '
+
+[memory_usage]
+disabled = false
+threshold = 80
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+fish_style_pwd_dir_length = 1
+
+[cmd_duration]
+disabled = true
