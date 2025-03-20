@@ -1,6 +1,9 @@
 # Map cmd+p to ctrl+p for use in Neovim
 keybind = super+p=text:\x10
 
+# Add clear screen binding that doesn't conflict with ctrl-l pane navigation
+keybind = ctrl+enter=clear_screen
+
 # Some other favorite themes: Atom, catppuccin-frappe
 theme = tokyonight
 font-size = 16

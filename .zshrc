@@ -14,7 +14,7 @@ ZSH_THEME=""
 export PATH="$PATH:/Users/colin/.local/bin:/opt/homebrew/bin"
 #NPM_DIR=`npm config get prefix`
 #export PATH="$PATH:$NPM_DIR/bin"
-export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
