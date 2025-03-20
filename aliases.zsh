@@ -4,7 +4,6 @@ alias bb="cd ../../"
 alias bbb="cd ../../../"
 alias bbbb="cd ../../../../"
 alias bbbbb="cd ../../../../../"
-alias wk="cd ~/work"
 
 alias ltr="ls -ltr"
 alias f="rg --files -g "
@@ -22,7 +21,7 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     alias pbpaste="xclip -selection clipboard -o"
 fi
 
-alias mr='cd ~/work/monorepo && nvm use'
+alias mr='cd ~/code/monorepo && nvm use'
 alias notify="~/notify_done.sh"
 alias vi="nvim"
 
