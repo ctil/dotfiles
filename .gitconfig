@@ -13,7 +13,14 @@
 
 [push]
 	default = current
+	autoSetupRemote = true
 
 [user]
 	email = ctil@users.noreply.github.com
 	name = ctil
+
+[pull]
+        ff = only
+
+[core]
+	editor = nvim
