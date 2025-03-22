@@ -3,6 +3,7 @@
 # Install tools
 brew install fzf \
     gh \
+    blueutil \
     ripgrep \
     starship \
     ghostty \
