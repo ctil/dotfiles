@@ -13,6 +13,7 @@ alias sz="source ~/.zshrc"
 
 # Git
 alias gam="git commit -a --amend --no-edit"
+alias gca="git commit -am "
 alias gl1="git log -1"
 alias gfm="git fetch origin master:master"
 
