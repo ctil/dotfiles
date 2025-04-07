@@ -6,7 +6,7 @@ keybind = ctrl+enter=clear_screen
 
 # Some other favorite themes: Atom, catppuccin-frappe
 theme = tokyonight
-font-size = 16
+font-size = 15
 
 # No ligatures
 font-feature = -calt, -liga, -dlig

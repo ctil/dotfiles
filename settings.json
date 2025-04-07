@@ -167,6 +167,7 @@
   ],
   "editor.minimap.enabled": false,
   "files.autoSave": "onFocusChange",
+  "files.hotExit": "off",
   "editor.suggestSelection": "first",
   "editor.linkedEditing": true,
   "rust-analyzer.files.watcher": "client",
@@ -194,6 +195,8 @@
   "git.confirmSync": false,
   "terminal.integrated.fontSize": 15,
   "editor.fontSize": 14,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": false,
   "explorer.openEditors.visible": 1,
   "[python]": {
     "editor.rulers": [105],
@@ -297,5 +300,7 @@
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "terminal.integrated.fontFamily": "monospace",
+  "editor.accessibilitySupport": "off"
 }
