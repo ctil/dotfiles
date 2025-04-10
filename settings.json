@@ -1,99 +1,10 @@
 {
-  "vim.insertModeKeyBindings": [
+  "vim.insertModeKeyBindingsNonRecursive": [
     {
       "before": ["j", "k"],
       "after": ["<Esc>"]
     }
   ],
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["<leader>", "l", "a"],
-      "commands": ["problems.action.showQuickFixes"]
-    },
-    {
-      "before": ["<leader>", "v"],
-      "commands": ["workbench.action.splitEditorRight"]
-    },
-    {
-      "before": ["<leader>", "/"],
-      "commands": ["find-it-faster.findWithinFiles"]
-    },
-    {
-      "before": ["<leader>", "f", "f"],
-      "commands": ["workbench.action.quickOpen"]
-    },
-    {
-      "before": ["<leader>", "<space>"],
-      "commands": ["workbench.action.files.save"]
-    },
-    {
-      "before": ["<leader>", "g", "r"],
-      "commands": ["git.revertSelectedRanges"]
-    },
-    {
-      "before": ["<leader>", "R"],
-      "commands": ["editor.action.rename"]
-    },
-    {
-      "before": ["<leader>", "lr"],
-      "commands": ["editor.action.rename"]
-    },
-    {
-      "before": ["<leader>", "p"],
-      "after": ["<C-6>"]
-    },
-    {
-      "before": ["<leader>", "<leader>"],
-      "commands": ["workbench.action.files.save"]
-    },
-    {
-      "before": ["<leader>", "t"],
-      "commands": ["workbench.action.terminal.focus"]
-    },
-    {
-      "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
-    },
-    {
-      "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      "before": ["]", "q"],
-      "commands": ["search.action.focusNextSearchResult"]
-    },
-    {
-      "before": ["[", "q"],
-      "commands": ["search.action.focusPreviousSearchResult"]
-    },
-    {
-      "before": ["]", "b"],
-      "commands": ["workbench.action.nextEditorInGroup"]
-    },
-    {
-      "before": ["[", "b"],
-      "commands": ["workbench.action.previousEditorInGroup"]
-    },
-    {
-      "before": ["]", "e"],
-      "commands": ["editor.action.moveLinesDownAction"]
-    },
-    {
-      "before": ["[", "e"],
-      "commands": ["editor.action.moveLinesUpAction"]
-    }
-  ],
-  "vim.textwidth": 100,
-  "vim.smartRelativeLine": true,
-  "vim.useSystemClipboard": true,
-  "vim.leader": " ",
-  "vim.surround": true,
-  "vim.handleKeys": {
-    "<C-d>": true,
-    "<C-f>": false,
-    "<C-k>": true,
-    "<C-w>": true
-  },
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<leader>", "w"],
@@ -164,7 +75,113 @@
       "before": ["c-r"],
       "commands": ["redo"]
     }
+    {
+      "before": ["<leader>", "l", "a"],
+      "commands": ["problems.action.showQuickFixes"]
+    },
+    {
+      "before": ["<leader>", "v"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["find-it-faster.findWithinFiles"]
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "<space>"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "g", "r"],
+      "commands": ["git.revertSelectedRanges"]
+    },
+    {
+      "before": ["<leader>", "R"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "lr"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "after": ["<C-6>"]
+    },
+    {
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.focus"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "s"],
+      "commands": ["search.action.focusNextSearchResult", "<Esc>"]
+    },
+    {
+      "before": ["[", "s"],
+      "commands": ["search.action.focusPreviousSearchResult", "<Esc>"]
+    },
+    {
+      "before": ["]", "b"],
+      "commands": ["workbench.action.nextEditorInGroup"]
+    },
+    {
+      "before": ["[", "b"],
+      "commands": ["workbench.action.previousEditorInGroup"]
+    },
+    {
+      "before": ["]", "e"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["[", "e"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
   ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["]", "s"],
+      "commands": ["search.action.focusNextSearchResult", "<Esc>"]
+    },
+    {
+      "before": ["[", "s"],
+      "commands": ["search.action.focusPreviousSearchResult", "<Esc>"]
+    },
+    {
+      "before": ["]", "b"],
+      "commands": ["workbench.action.nextEditorInGroup"]
+    },
+    {
+      "before": ["[", "b"],
+      "commands": ["workbench.action.previousEditorInGroup"]
+    }
+  ],
+  "vim.textwidth": 100,
+  "vim.smartRelativeLine": true,
+  "vim.useSystemClipboard": true,
+  "vim.leader": " ",
+  "vim.surround": true,
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-f>": false,
+    "<C-k>": true,
+    "<C-w>": true
+  },
+  "vim.highlightedyank.enable": true,
   "editor.minimap.enabled": false,
   "files.autoSave": "onFocusChange",
   "files.hotExit": "off",
@@ -277,7 +294,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.stickyScroll.enabled": true,
-  "vim.highlightedyank.enable": true,
   "vsnotes.defaultNotePath": "~/notes",
   "vsnotes.defaultNoteTitle": "{title}.{ext}",
   "playwright.reuseBrowser": false,
@@ -290,17 +306,17 @@
   "rust-analyzer.debug.engine": "vadimcn.vscode-lldb",
   "rust-analyzer.check.allTargets": true,
   "rust-analyzer.check.command": "clippy",
-  "rust-analyzer.checkOnSave": true,
+  "rust-analyzer.checkOnSave": false,
   "rust-analyzer.cargo.extraArgs": ["--target-dir", "./rust-analyzer-target"],
   "lldb.suppressUpdateNotifications": true,
-  "cursor.cpp.disabledLanguages": ["yaml", "plaintext", "markdown", "json"],
   "find-it-faster.general.useTerminalInEditor": true,
-  "find-it-faster.general.killTerminalAfterUse": false,
+  "find-it-faster.general.killTerminalAfterUse": true,
   "workbench.colorTheme": "Atom One Dark",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "terminal.integrated.fontFamily": "monospace",
-  "editor.accessibilitySupport": "off"
+  "editor.accessibilitySupport": "off",
+  "editor.inlineSuggest.edits.showCollapsed": false
 }
