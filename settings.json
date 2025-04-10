@@ -74,7 +74,7 @@
     {
       "before": ["c-r"],
       "commands": ["redo"]
-    }
+    },
     {
       "before": ["<leader>", "l", "a"],
       "commands": ["problems.action.showQuickFixes"]
@@ -150,7 +150,7 @@
     {
       "before": ["[", "e"],
       "commands": ["editor.action.moveLinesUpAction"]
-    },
+    }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
