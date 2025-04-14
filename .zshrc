@@ -16,6 +16,10 @@ export PATH="$PATH:/Users/colin/.local/bin:/opt/homebrew/bin"
 #export PATH="$PATH:$NPM_DIR/bin"
 export PATH="$PATH:$HOME/go/bin"
 
+# Uncomment the following line if pasting URLs and other text is messed up.
+# https://github.com/ohmyzsh/ohmyzsh/issues/11375
+DISABLE_MAGIC_FUNCTIONS="true"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/

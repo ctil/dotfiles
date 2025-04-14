@@ -7,6 +7,18 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "before": ["]", "x"],
+      "commands": ["workbench.action.compareEditor.nextChange"]
+    },
+    {
+      "before": ["<leader>", "b", "l"],
+      "commands": ["workbench.action.closeEditorsToTheLeft"]
+    },
+    {
+      "before": ["<leader>", "b", "r"],
+      "commands": ["workbench.action.closeEditorsToTheLeft"]
+    },
+    {
       "before": ["<leader>", "w"],
       "after": [],
       "commands": [
@@ -288,6 +300,7 @@
   "rust-analyzer.inlayHints.typeHints.enable": false,
   "workbench.preferredLightColorTheme": "Solarized Light",
   "workbench.preferredDarkColorTheme": "Atom One Dark",
+  "workbench.colorTheme": "Atom One Dark",
   "githubPullRequests.pullBranch": "never",
   "editor.lineNumbers": "relative",
   "[json]": {
@@ -311,7 +324,6 @@
   "lldb.suppressUpdateNotifications": true,
   "find-it-faster.general.useTerminalInEditor": true,
   "find-it-faster.general.killTerminalAfterUse": true,
-  "workbench.colorTheme": "Atom One Dark",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
