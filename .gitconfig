@@ -4,6 +4,7 @@
 	st = status
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	dt = difftool -d
+	dn = diff --name-only master
 
 [diff]
 	tool = meld
@@ -20,7 +21,8 @@
 	name = ctil
 
 [pull]
-        ff = only
+	ff = only
 
 [core]
 	editor = nvim
+	pager = less -F -X

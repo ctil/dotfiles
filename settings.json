@@ -229,7 +229,7 @@
   "explorer.openEditors.visible": 1,
   "[python]": {
     "editor.rulers": [105],
-    "editor.defaultFormatter": "ms-python.python",
+    "editor.defaultFormatter": "ms-python.autopep8",
     "editor.formatOnType": true
   },
   "extensions.ignoreRecommendations": false,
