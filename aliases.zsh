@@ -33,3 +33,6 @@ alias mr='cd ~/code/monorepo && nvm use'
 # Tmux
 alias tn="tmux new-session -s "
 alias tk="tmux kill-session -t "
+
+alias gemini='npx https://github.com/google-gemini/gemini-cli'
+alias cl="claude"

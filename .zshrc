@@ -69,6 +69,8 @@ nvm () {
     nvm $@ # Copy arguments after nvm
 }
 
+# Bump up the memory for node so tsc doesn't crash
+export NODE_OPTIONS="--max-old-space-size=8192"
 
 # Postgres lib
 export PQ_LIB_DIR="/opt/homebrew/opt/libpq/lib"
