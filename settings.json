@@ -309,7 +309,7 @@
   "editor.stickyScroll.enabled": true,
   "vsnotes.defaultNotePath": "~/notes",
   "vsnotes.defaultNoteTitle": "{title}.{ext}",
-  "playwright.reuseBrowser": false,
+  "playwright.reuseBrowser": true,
   "debug.allowBreakpointsEverywhere": true,
   "editor.inlineSuggest.enabled": true,
   "editor.autoClosingQuotes": "never",

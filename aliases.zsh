@@ -16,6 +16,7 @@ alias gam="git commit -a --amend --no-edit"
 alias gca="git commit -am "
 alias gl1="git log -1"
 alias gfm="git fetch origin master:master"
+alias gdn="git diff master --name-only"
 
 # Simulate pbpaste/pbcopy if on Linux
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
@@ -34,5 +35,4 @@ alias mr='cd ~/code/monorepo && nvm use'
 alias tn="tmux new-session -s "
 alias tk="tmux kill-session -t "
 
-alias gemini='npx https://github.com/google-gemini/gemini-cli'
 alias cl="claude"

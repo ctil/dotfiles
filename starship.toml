@@ -27,7 +27,7 @@ $character
 symbol = " "
 
 [time]
-disabled = false
+disabled = true
 use_12hr = true
 style = "bright-black"
 format = ' [$time]($style)'
