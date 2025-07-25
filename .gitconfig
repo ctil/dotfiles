@@ -5,6 +5,7 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	dt = difftool -d
 	dn = diff --name-only master
+	wt = worktree
 
 [diff]
 	tool = meld
