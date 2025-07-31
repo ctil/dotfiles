@@ -61,7 +61,11 @@ cd "$root"
 if [ -d "$wtdir/.git" ]; then
   cd "$wtdir"
 else
-  git worktree add -b "$name" "$wtdir" $main_branch
+  if git show-ref --verify --quiet refs/heads/$name; then
+    git worktree add "$wtdir" "$name"
+  else
+    git worktree add -b "$name" "$wtdir" $main_branch
+  fi
   cd "$wtdir"
 fi
 exec \$SHELL
