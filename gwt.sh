@@ -37,7 +37,8 @@ if [[ $# -eq 0 ]]; then
 else
   # create/reuse worktrees/NAME
   name=$1
-  wtdir="$worktrees_base/$name"
+  safe_name=${name//\//_}
+  wtdir="$worktrees_base/$safe_name"
 fi
 
 window="WT-$name"   # tmux window name
