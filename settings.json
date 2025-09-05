@@ -330,5 +330,6 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "terminal.integrated.fontFamily": "monospace",
   "editor.accessibilitySupport": "off",
-  "editor.inlineSuggest.edits.showCollapsed": false
+  "editor.inlineSuggest.edits.showCollapsed": false,
+  "playwright.runGlobalSetupOnEachRun": true
 }

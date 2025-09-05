@@ -11,7 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="robbyrussell"
 ZSH_THEME=""
 
-export PATH="$PATH:/Users/colin/.local/bin:/opt/homebrew/bin"
+export PATH="/opt/homebrew/bin:$PATH:/Users/colin/.local/bin"
 #NPM_DIR=`npm config get prefix`
 #export PATH="$PATH:$NPM_DIR/bin"
 export PATH="$PATH:$HOME/go/bin"

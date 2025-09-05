@@ -16,7 +16,7 @@ alias gam="git commit -a --amend --no-edit"
 alias gca="git commit -am "
 alias gl1="git log -1"
 alias gfm="git fetch origin master:master"
-alias gdn="git diff master --name-only"
+alias gdn="git diff master...HEAD --name-only"
 alias gwt="~/dotfiles/gwt.sh"
 
 # Simulate pbpaste/pbcopy if on Linux
