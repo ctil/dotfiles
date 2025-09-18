@@ -5,6 +5,7 @@ $username\
 $hostname\
 $localip\
 $directory\
+$python\
 $git_branch\
 $git_commit\
 $git_state\
@@ -55,3 +56,9 @@ fish_style_pwd_dir_length = 1
 
 [cmd_duration]
 disabled = true
+
+[python]
+symbol = "🐍 "
+pyenv_version_name = true
+format = '[$symbol$pyenv_prefix($version )]($style)[(\($virtualenv\) )]($style)'
+style = "bright-blue"
