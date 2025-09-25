@@ -112,4 +112,7 @@ if [ -f "$HOME/.env" ]; then
   set +x
 fi
 
+# Claude code
+alias claude="~/.claude/local/claude"
+
 eval "$(starship init zsh)"
