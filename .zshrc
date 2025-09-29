@@ -16,6 +16,8 @@ export PATH="/opt/homebrew/bin:$PATH:/Users/colin/.local/bin"
 #export PATH="$PATH:$NPM_DIR/bin"
 export PATH="$PATH:$HOME/go/bin"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Uncomment the following line if pasting URLs and other text is messed up.
 # https://github.com/ohmyzsh/ohmyzsh/issues/11375
 DISABLE_MAGIC_FUNCTIONS="true"
