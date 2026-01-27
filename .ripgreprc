@@ -3,6 +3,9 @@
 rpc:*.rpc
 
 --type-add
+env:*.env
+
+--type-add
 vue:*.vue
 
 # Ignore certain folders

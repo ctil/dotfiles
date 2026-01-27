@@ -331,5 +331,7 @@
   "terminal.integrated.fontFamily": "monospace",
   "editor.accessibilitySupport": "off",
   "editor.inlineSuggest.edits.showCollapsed": false,
-  "playwright.runGlobalSetupOnEachRun": true
+  "playwright.runGlobalSetupOnEachRun": false,
+  "playwright.pickLocatorCopyToClipboard": true,
+  "chat.useAgentSkills": true
 }

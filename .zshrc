@@ -114,7 +114,11 @@ if [ -f "$HOME/.env" ]; then
   set +x
 fi
 
-# Claude code
-alias claude="~/.claude/local/claude"
-
 eval "$(starship init zsh)"
+
+# bun completions
+[ -s "/Users/colin/.oh-my-zsh/completions/_bun" ] && source "/Users/colin/.oh-my-zsh/completions/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
