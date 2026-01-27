@@ -42,7 +42,7 @@ else
 fi
 
 window="WT-$name"   # tmux window name
-session="$repo_name" # tmux session named after the repo
+session="$name"      # tmux session named after the worktree
 
 ################################################################################
 # 2 · figure out the repo’s default branch for *new* work-trees
@@ -59,7 +59,7 @@ fi
 setup_worktree=$(
   cat <<EOF
 cd "$root"
-if [ -d "$wtdir/.git" ]; then
+if [ -e "$wtdir/.git" ]; then
   cd "$wtdir"
 else
   if git show-ref --verify --quiet refs/heads/$name; then
@@ -76,19 +76,25 @@ EOF
 ################################################################################
 # 4 · inside-tmux vs. outside-tmux workflow
 ################################################################################
+# Ensure worktree directory exists (for new worktrees, git will populate it)
+mkdir -p "$wtdir"
+
+# Create session if it doesn't exist
+if ! tmux has-session -t "$session" 2>/dev/null; then
+  tmux new-session -d -s "$session" -n "$window" -c "$wtdir"
+  tmux send-keys -t "$session:$window" "$setup_worktree" C-m
+fi
+
+# Create window if it doesn't exist in the session
+if ! tmux list-windows -t "$session" -F '#{window_name}' | grep -Fxq "$window"; then
+  tmux new-window -t "$session" -n "$window" -c "$wtdir"
+  tmux send-keys -t "$session:$window" "$setup_worktree" C-m
+fi
+
 if [[ -n ${TMUX:-} ]]; then
-  tmux new-window -n "$window"
-  tmux send-keys "$setup_worktree" C-m
-  exit 0
-fi
-
-tmux new-session -Ad -s "$session" -n "$window"
-
-if tmux list-windows -t "$session" -F '#{window_name}' | grep -Fxq "$window"; then
-  tmux select-window -t "$session:$window"
+  # Inside tmux: switch to the session/window
+  tmux switch-client -t "$session:$window"
 else
-  tmux new-window -t "$session" -n "$window"
+  # Outside tmux: attach to the session
+  tmux attach -t "$session:$window"
 fi
-
-tmux send-keys -t "$session:$window" "$setup_worktree" C-m
-tmux attach -t "$session:$window"
