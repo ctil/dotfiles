@@ -41,7 +41,6 @@ else
   wtdir="$worktrees_base/$safe_name"
 fi
 
-window="WT-$name"   # tmux window name
 session="$name"      # tmux session named after the worktree
 
 ################################################################################
@@ -67,20 +66,18 @@ fi
 ################################################################################
 # 4 · inside-tmux vs. outside-tmux workflow
 ################################################################################
-# Create session if it doesn't exist
+# Create session with 3 windows if it doesn't exist
 if ! tmux has-session -t "$session" 2>/dev/null; then
-  tmux new-session -d -s "$session" -n "$window" -c "$wtdir"
-fi
-
-# Create window if it doesn't exist in the session
-if ! tmux list-windows -t "$session" -F '#{window_name}' | grep -Fxq "$window"; then
-  tmux new-window -t "$session" -n "$window" -c "$wtdir"
+  tmux new-session -d -s "$session" -n "WT-nvim" -c "$wtdir"
+  tmux new-window -t "$session" -n "shell" -c "$wtdir"
+  tmux new-window -t "$session" -n "claude" -c "$wtdir"
+  tmux select-window -t "$session:WT-nvim"
 fi
 
 if [[ -n ${TMUX:-} ]]; then
-  # Inside tmux: switch to the session/window
-  tmux switch-client -t "$session:$window"
+  # Inside tmux: switch to the session
+  tmux switch-client -t "$session"
 else
   # Outside tmux: attach to the session
-  tmux attach -t "$session:$window"
+  tmux attach -t "$session"
 fi
