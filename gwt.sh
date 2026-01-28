@@ -68,10 +68,10 @@ fi
 ################################################################################
 # Create session with 3 windows if it doesn't exist
 if ! tmux has-session -t "$session" 2>/dev/null; then
-  tmux new-session -d -s "$session" -n "WT-nvim" -c "$wtdir"
+  tmux new-session -d -s "$session" -n "WT-$name" -c "$wtdir"
   tmux new-window -t "$session" -n "shell" -c "$wtdir"
   tmux new-window -t "$session" -n "claude" -c "$wtdir"
-  tmux select-window -t "$session:WT-nvim"
+  tmux select-window -t "$session:WT-$name"
 fi
 
 if [[ -n ${TMUX:-} ]]; then
