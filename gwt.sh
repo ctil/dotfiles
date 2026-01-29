@@ -33,7 +33,7 @@ if [[ $# -eq 0 ]]; then
     fzf --prompt='Worktree ❯ ' --exit-0)
 
   [[ -n ${wtdir:-} ]] || exit 0 # user pressed <Esc>
-  name=$(basename "$wtdir")     # eg. worktrees/feature → feature
+  name=$(git -C "$wtdir" rev-parse --abbrev-ref HEAD)  # get branch name
 else
   # create/reuse worktrees/NAME
   name=$1
