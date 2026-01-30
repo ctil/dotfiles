@@ -1,0 +1,52 @@
+{
+    "trustDirectories": [
+        "~/worktrees/*"
+    ],
+    "hooks": {
+        "Notification": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "afplay /System/Library/Sounds/Submarine.aiff"
+                    }
+                ]
+            }
+        ]
+    },
+    "permissions": {
+        "allow": [
+            "Bash(cargo:*)",
+            "Bash(chmod:*)",
+            "Bash(echo:*)",
+            "Bash(find:*)",
+            "Bash(gh:*)",
+            "Bash(grep:*)",
+            "Bash(head:*)",
+            "Bash(just:*)",
+            "Bash(ls:*)",
+            "Bash(lsof:*)",
+            "Bash(mkdir:*)",
+            "Bash(mv:*)",
+            "Bash(npm search:*)",
+            "Bash(npm view:*)",
+            "Bash(npm:*)",
+            "Bash(npx:*)",
+            "Bash(rg:*)",
+            "Bash(sed:*)",
+            "Bash(source:*)",
+            "Bash(tail:*)",
+            "Bash(touch:*)",
+            "Bash(yarn:*)",
+            "Update(*)",
+            "Write(*)"
+        ],
+        "deny": []
+    },
+    "enabledPlugins": {
+        "gopls-lsp@claude-plugins-official": true,
+        "lua-lsp@claude-plugins-official": true,
+        "rust-analyzer-lsp@claude-plugins-official": true
+    }
+}

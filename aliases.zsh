@@ -38,4 +38,6 @@ alias mr='cd ~/code/monorepo && nvm use'
 alias tn="tmux new-session -s "
 alias tk="tmux kill-session -t "
 
+# Claude code
 alias cl="claude"
+alias yoloclaude="claude --settings ~/.claude/settings_permissive.json"
