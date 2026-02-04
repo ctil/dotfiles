@@ -1,20 +1,4 @@
 {
-    "trustDirectories": [
-        "~/worktrees/*"
-    ],
-    "hooks": {
-        "Notification": [
-            {
-                "matcher": "",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "afplay /System/Library/Sounds/Glass.aiff"
-                    }
-                ]
-            }
-        ]
-    },
     "permissions": {
         "allow": [
             "Bash(gh pr view:*)",
@@ -30,11 +14,27 @@
         ],
         "deny": []
     },
+    "hooks": {
+        "Notification": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "afplay /System/Library/Sounds/Glass.aiff"
+                    }
+                ]
+            }
+        ]
+    },
     "enabledPlugins": {
         "gopls-lsp@claude-plugins-official": true,
         "lua-lsp@claude-plugins-official": true,
         "rust-analyzer-lsp@claude-plugins-official": true
     },
+    "trustDirectories": [
+        "~/worktrees/*"
+    ],
     "feedbackSurveyState": {
         "lastShownTime": 1754081867486
     }

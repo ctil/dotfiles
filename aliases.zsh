@@ -40,4 +40,5 @@ alias tk="tmux kill-session -t "
 
 # Claude code
 alias cl="claude"
-alias yoloclaude="claude --settings ~/.claude/settings_permissive.json"
+alias cly="claude --settings ~/.claude/settings_permissive.json"
+alias clu="claude update"
