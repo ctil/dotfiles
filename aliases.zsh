@@ -17,8 +17,8 @@ alias gca="git commit -am "
 alias gl1="git log -1"
 alias gfm="git fetch origin master:master"
 alias gdn="git diff master...HEAD --name-only"
-alias gwt="~/dotfiles/gwt.sh"
-alias gwtd="~/dotfiles/gwtd.sh"
+alias gwt="~/dotfiles/gwt.py create"
+alias gwtd="~/dotfiles/gwt.py delete"
 alias lg="lazygit"
 
 # Simulate pbpaste/pbcopy if on Linux
