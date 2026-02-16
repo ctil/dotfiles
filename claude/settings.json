@@ -1,42 +1,43 @@
 {
-    "permissions": {
-        "allow": [
-            "Bash(gh pr view:*)",
-            "Bash(find:*)",
-            "Bash(just:*)",
-            "Bash(grep:*)",
-            "Bash(gh pr diff:*)",
-            "Bash(rg:*)",
-            "Bash(yarn:*)",
-            "Bash(npm view:*)",
-            "Bash(npm search:*)",
-            "Bash(cargo:*)"
-        ],
-        "deny": []
-    },
-    "hooks": {
-        "Notification": [
-            {
-                "matcher": "",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "afplay /System/Library/Sounds/Glass.aiff"
-                    }
-                ]
-            }
-        ]
-    },
-    "enabledPlugins": {
-        "gopls-lsp@claude-plugins-official": true,
-        "lua-lsp@claude-plugins-official": true,
-        "rust-analyzer-lsp@claude-plugins-official": true
-    },
-    "trustDirectories": [
-        "~/worktrees/*"
+  "permissions": {
+    "allow": [
+      "Bash(gh pr view:*)",
+      "Bash(find:*)",
+      "Bash(just:*)",
+      "Bash(grep:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(rg:*)",
+      "Bash(yarn:*)",
+      "Bash(npm view:*)",
+      "Bash(npm search:*)",
+      "Bash(cargo:*)"
     ],
-    "feedbackSurveyState": {
-        "lastShownTime": 1754081867486
-    },
-    "model": "opus"
+    "deny": []
+  },
+  "model": "opus",
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "trustDirectories": [
+    "~/worktrees/*"
+  ],
+  "feedbackSurveyState": {
+    "lastShownTime": 1754081867486
+  },
+  "skipDangerousModePermissionPrompt": true
 }

@@ -2,21 +2,21 @@
   "vim.insertModeKeyBindingsNonRecursive": [
     {
       "before": ["j", "k"],
-      "after": ["<Esc>"]
-    }
+      "after": ["<Esc>"],
+    },
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["]", "x"],
-      "commands": ["workbench.action.compareEditor.nextChange"]
+      "commands": ["workbench.action.compareEditor.nextChange"],
     },
     {
       "before": ["<leader>", "b", "l"],
-      "commands": ["workbench.action.closeEditorsToTheLeft"]
+      "commands": ["workbench.action.closeEditorsToTheLeft"],
     },
     {
       "before": ["<leader>", "b", "r"],
-      "commands": ["workbench.action.closeEditorsToTheLeft"]
+      "commands": ["workbench.action.closeEditorsToTheLeft"],
     },
     {
       "before": ["<leader>", "w"],
@@ -24,9 +24,9 @@
       "commands": [
         {
           "command": "extension.vim_ctrl+w",
-          "args": []
-        }
-      ]
+          "args": [],
+        },
+      ],
     },
     {
       "before": ["<leader>", "R"],
@@ -34,9 +34,9 @@
       "commands": [
         {
           "command": "editor.action.rename",
-          "args": []
-        }
-      ]
+          "args": [],
+        },
+      ],
     },
     {
       "before": ["]", "h"],
@@ -44,9 +44,9 @@
       "commands": [
         {
           "command": "workbench.action.editor.nextChange",
-          "args": []
-        }
-      ]
+          "args": [],
+        },
+      ],
     },
     {
       "before": ["[", "h"],
@@ -54,9 +54,9 @@
       "commands": [
         {
           "command": "workbench.action.editor.previousChange",
-          "args": []
-        }
-      ]
+          "args": [],
+        },
+      ],
     },
     {
       "before": ["K"],
@@ -64,9 +64,9 @@
       "commands": [
         {
           "command": "editor.action.showHover",
-          "args": []
-        }
-      ]
+          "args": [],
+        },
+      ],
     },
     {
       "before": ["<leader>", "x"],
@@ -74,113 +74,113 @@
       "commands": [
         {
           "command": "workbench.action.closeActiveEditor",
-          "args": []
-        }
-      ]
+          "args": [],
+        },
+      ],
     },
     // This works around a bug with undo/redo
     {
       "before": ["u"],
-      "commands": ["undo"]
+      "commands": ["undo"],
     },
     {
       "before": ["c-r"],
-      "commands": ["redo"]
+      "commands": ["redo"],
     },
     {
       "before": ["<leader>", "l", "a"],
-      "commands": ["problems.action.showQuickFixes"]
+      "commands": ["problems.action.showQuickFixes"],
     },
     {
       "before": ["<leader>", "v"],
-      "commands": ["workbench.action.splitEditorRight"]
+      "commands": ["workbench.action.splitEditorRight"],
     },
     {
       "before": ["<leader>", "/"],
-      "commands": ["find-it-faster.findWithinFiles"]
+      "commands": ["find-it-faster.findWithinFiles"],
     },
     {
       "before": ["<leader>", "f", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "commands": ["workbench.action.quickOpen"],
     },
     {
       "before": ["<leader>", "<space>"],
-      "commands": ["workbench.action.files.save"]
+      "commands": ["workbench.action.files.save"],
     },
     {
       "before": ["<leader>", "g", "r"],
-      "commands": ["git.revertSelectedRanges"]
+      "commands": ["git.revertSelectedRanges"],
     },
     {
       "before": ["<leader>", "R"],
-      "commands": ["editor.action.rename"]
+      "commands": ["editor.action.rename"],
     },
     {
       "before": ["<leader>", "lr"],
-      "commands": ["editor.action.rename"]
+      "commands": ["editor.action.rename"],
     },
     {
       "before": ["<leader>", "p"],
-      "after": ["<C-6>"]
+      "after": ["<C-6>"],
     },
     {
       "before": ["<leader>", "<leader>"],
-      "commands": ["workbench.action.files.save"]
+      "commands": ["workbench.action.files.save"],
     },
     {
       "before": ["<leader>", "t"],
-      "commands": ["workbench.action.terminal.focus"]
+      "commands": ["workbench.action.terminal.focus"],
     },
     {
       "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
+      "commands": ["editor.action.marker.next"],
     },
     {
       "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
+      "commands": ["editor.action.marker.prev"],
     },
     {
       "before": ["]", "s"],
-      "commands": ["search.action.focusNextSearchResult", "<Esc>"]
+      "commands": ["search.action.focusNextSearchResult", "<Esc>"],
     },
     {
       "before": ["[", "s"],
-      "commands": ["search.action.focusPreviousSearchResult", "<Esc>"]
+      "commands": ["search.action.focusPreviousSearchResult", "<Esc>"],
     },
     {
       "before": ["]", "b"],
-      "commands": ["workbench.action.nextEditorInGroup"]
+      "commands": ["workbench.action.nextEditorInGroup"],
     },
     {
       "before": ["[", "b"],
-      "commands": ["workbench.action.previousEditorInGroup"]
+      "commands": ["workbench.action.previousEditorInGroup"],
     },
     {
       "before": ["]", "e"],
-      "commands": ["editor.action.moveLinesDownAction"]
+      "commands": ["editor.action.moveLinesDownAction"],
     },
     {
       "before": ["[", "e"],
-      "commands": ["editor.action.moveLinesUpAction"]
-    }
+      "commands": ["editor.action.moveLinesUpAction"],
+    },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
       "before": ["]", "s"],
-      "commands": ["search.action.focusNextSearchResult", "<Esc>"]
+      "commands": ["search.action.focusNextSearchResult", "<Esc>"],
     },
     {
       "before": ["[", "s"],
-      "commands": ["search.action.focusPreviousSearchResult", "<Esc>"]
+      "commands": ["search.action.focusPreviousSearchResult", "<Esc>"],
     },
     {
       "before": ["]", "b"],
-      "commands": ["workbench.action.nextEditorInGroup"]
+      "commands": ["workbench.action.nextEditorInGroup"],
     },
     {
       "before": ["[", "b"],
-      "commands": ["workbench.action.previousEditorInGroup"]
-    }
+      "commands": ["workbench.action.previousEditorInGroup"],
+    },
   ],
   "vim.textwidth": 100,
   "vim.smartRelativeLine": true,
@@ -191,7 +191,7 @@
     "<C-d>": true,
     "<C-f>": false,
     "<C-k>": true,
-    "<C-w>": true
+    "<C-w>": true,
   },
   "vim.highlightedyank.enable": true,
   "editor.minimap.enabled": false,
@@ -203,14 +203,14 @@
   "files.associations": {
     "Dockerfile*": "dockerfile",
     "Jenkinsfile*": "groovy",
-    "*html.hbs": "html"
+    "*html.hbs": "html",
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/node_modules/**": true,
     "**/.idea/**": true,
-    "**/target/**": true
+    "**/target/**": true,
   },
   "files.exclude": {
     "**/.git": true,
@@ -218,7 +218,7 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/target": true
+    "**/target": true,
   },
   "workbench.editor.enablePreviewFromQuickOpen": true,
   "git.confirmSync": false,
@@ -230,7 +230,7 @@
   "[python]": {
     "editor.rulers": [105],
     "editor.defaultFormatter": "ms-python.autopep8",
-    "editor.formatOnType": true
+    "editor.formatOnType": true,
   },
   "extensions.ignoreRecommendations": false,
   "editor.renderWhitespace": "all",
@@ -241,33 +241,33 @@
   "eslint.validate": ["vue", "typescript"],
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[seed.sql]": {
     "editor.formatOnSave": false,
     "files.trimTrailingWhitespace": false,
-    "editor.insertSpaces": false
+    "editor.insertSpaces": false,
   },
   "[sql]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
   },
   "[yaml]": {
     "editor.insertSpaces": true,
     "editor.formatOnSave": false,
     "editor.tabSize": 2,
-    "editor.autoIndent": "advanced"
+    "editor.autoIndent": "advanced",
   },
   "[hbs]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
   },
   "[scss]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
   },
   "rust-analyzer.files.excludeDirs": [
     "target",
@@ -276,17 +276,17 @@
     "codepipeline",
     "support",
     "images",
-    "scripts"
+    "scripts",
   ],
   "liveshare.presence": true,
   "search.exclude": {
-    "libraries/backend-protos/**": false
+    "libraries/backend-protos/**": false,
   },
   "[mjml]": {
-    "editor.defaultFormatter": "mjmlio.vscode-mjml"
+    "editor.defaultFormatter": "mjmlio.vscode-mjml",
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
@@ -304,7 +304,7 @@
   "githubPullRequests.pullBranch": "never",
   "editor.lineNumbers": "relative",
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "editor.stickyScroll.enabled": true,
   "vsnotes.defaultNotePath": "~/notes",
@@ -325,7 +325,7 @@
   "find-it-faster.general.useTerminalInEditor": true,
   "find-it-faster.general.killTerminalAfterUse": true,
   "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "terminal.integrated.fontFamily": "monospace",
@@ -333,5 +333,7 @@
   "editor.inlineSuggest.edits.showCollapsed": false,
   "playwright.runGlobalSetupOnEachRun": false,
   "playwright.pickLocatorCopyToClipboard": true,
-  "chat.useAgentSkills": true
+  "chat.useAgentSkills": true,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
 }
