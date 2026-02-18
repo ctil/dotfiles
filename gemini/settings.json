@@ -6,12 +6,13 @@
   },
   "context": {
     "fileName": [
-      "AGENTS.md",
       "CLAUDE.md",
       "GEMINI.md"
     ]
   },
   "general": {
     "previewFeatures": true
-  }
+  },
+  "theme": "Atom One",
+  "selectedAuthType": "oauth-personal"
 }
