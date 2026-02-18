@@ -14,7 +14,6 @@
     ],
     "deny": []
   },
-  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -33,11 +32,11 @@
     "lua-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true
   },
+  "skipDangerousModePermissionPrompt": true,
   "trustDirectories": [
     "~/worktrees/*"
   ],
   "feedbackSurveyState": {
     "lastShownTime": 1754081867486
-  },
-  "skipDangerousModePermissionPrompt": true
+  }
 }

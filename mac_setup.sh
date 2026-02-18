@@ -1,15 +1,17 @@
 #!/bin/bash
+# This is an idempotent script that sets up my macOS environment
 
-# Install tools
-brew install fzf \
-    gh \
-    blueutil \
-    ripgrep \
-    starship \
-    ghostty \
-    tmux \
-    zoxide \
-    nvim
+# Install Homebrew if not present
+if ! command -v brew &>/dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Install Brewfile dependencies
+brew bundle
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
 
 if [ ! -d "$HOME/.config/nvim" ]; then
     git clone https://github.com/ctil/nvim.git $HOME/.config/nvim
@@ -27,3 +29,5 @@ mkdir -p $HOME/code
 
 # Enable key repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
+
+./symlink_configs.sh

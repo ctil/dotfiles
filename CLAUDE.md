@@ -29,24 +29,6 @@ This is a personal dotfiles repository containing configuration files and setup 
 - FZF integration with ripgrep for file searching
 - Path setup for Homebrew, Go, Python, and Node.js
 
-### Aliases (aliases.zsh)
-Key development aliases:
-- Navigation: `b`, `bb`, `bbb` for cd ../
-- Git shortcuts: `gam` (amend), `gca` (commit -am), `gwt` (worktree script)
-- File operations: `f` (ripgrep file search), `ltr` (ls -ltr)
-- Development: `vi` (nvim), `mr` (monorepo setup), `cl` (claude)
-
-### Git Configuration (.gitconfig)
-- Pager configured to only show when output doesn't fit screen
-- Username: "ctil", Email: "ctil@users.noreply.github.com"
-
-### Tool Configurations
-- **Ripgrep (.ripgreprc)**: Custom search configuration
-- **Starship (starship.toml)**: Custom prompt with git status, memory usage, directory info
-- **Tmux (.tmux.conf)**: Terminal multiplexer configuration
-- **Vim (.vimrc)**: Vim editor configuration
-- **VS Code (settings.json, keybindings.json)**: Editor settings
-
 ## Development Workflow
 
 The repository is designed around a git worktree + tmux workflow:
@@ -59,19 +41,17 @@ The repository is designed around a git worktree + tmux workflow:
 ## Environment Setup
 
 ### Prerequisites
-- macOS with Homebrew installed
 - Oh-my-zsh framework
 
 ### Initial Setup Process
 1. Clone this dotfiles repository
-2. Run `./mac_setup.sh` to install tools
-3. Run `./symlink_configs.sh` to link configurations
-4. Restart terminal or source ~/.zshrc
+2. Run `./mac_setup.sh` to install tools and symlink dotfiles
+3. Restart terminal or source ~/.zshrc
 
 ### Tool Dependencies
 Essential tools that must be installed:
 - fzf (fuzzy finder)
-- ripgrep (fast grep replacement) 
+- ripgrep (fast grep replacement)
 - tmux (terminal multiplexer)
 - starship (shell prompt)
 - zoxide (directory jumping)
