@@ -17,7 +17,8 @@ alias gca="git commit -am "
 alias gl1="git log -1"
 alias gfm='git fetch origin $(git_main_branch):$(git_main_branch)'
 alias gdn='git diff $(git_main_branch)...HEAD --name-only'
-alias gwt="~/dotfiles/gwt.py create"
+alias gwt="~/dotfiles/gwt.py"
+alias gwtc="~/dotfiles/gwt.py create"
 alias gwtd="~/dotfiles/gwt.py delete"
 alias lg="lazygit"
 

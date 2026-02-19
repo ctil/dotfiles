@@ -4,6 +4,7 @@
 Usage:
   gwt create [NAME]   → create/reuse worktrees and generate a tmux session
   gwt delete [NAME]   → remove worktree NAME and kill its tmux session
+  gwt clean           → remove worktrees whose upstream branch is gone
   gwt                  → show help
 """
 
@@ -174,6 +175,94 @@ def cmd_create(args: argparse.Namespace) -> None:
         run(["tmux", "attach", "-t", safe_session], check=True)
 
 
+def parse_worktree_map() -> dict[str, str]:
+    """Return a mapping of branch name → worktree path from porcelain output."""
+    rc, porcelain = run_output(["git", "worktree", "list", "--porcelain"])
+    if rc != 0:
+        die("failed to list worktrees")
+    branch_to_path: dict[str, str] = {}
+    current_path = ""
+    for line in porcelain.splitlines():
+        if line.startswith("worktree "):
+            current_path = line.split(" ", 1)[1]
+        elif line.startswith("branch refs/heads/"):
+            branch = line.split("refs/heads/", 1)[1]
+            branch_to_path[branch] = current_path
+    return branch_to_path
+
+
+def cmd_clean(args: argparse.Namespace) -> None:
+    rc, root = run_output(["git", "-C", ".", "rev-parse", "--show-toplevel"])
+    if rc != 0:
+        die("not inside a Git repository")
+    os.chdir(root)
+
+    # 1 — fetch and prune remote tracking branches
+    print("gwt: fetching and pruning remotes...")
+    run(["git", "fetch", "--prune"], check=True)
+
+    # 2 — find worktree branches whose upstream is gone
+    rc, out = run_output(["git", "branch", "-vv"])
+    if rc != 0:
+        die("failed to list branches")
+
+    stale_branches: list[str] = []
+    for line in out.splitlines():
+        stripped = line.lstrip()
+        if not stripped.startswith("+"):
+            continue
+        if ": gone]" not in line:
+            continue
+        branch = stripped[1:].lstrip().split()[0]
+        stale_branches.append(branch)
+
+    if not stale_branches:
+        print("gwt: no stale worktrees found")
+        return
+
+    # 3 — resolve branch → worktree path
+    branch_to_path = parse_worktree_map()
+    stale_pairs: list[tuple[str, str]] = []
+    for branch in stale_branches:
+        path = branch_to_path.get(branch)
+        if path and path != root:
+            stale_pairs.append((branch, path))
+
+    if not stale_pairs:
+        print("gwt: no stale worktrees found")
+        return
+
+    # 4 — print and confirm
+    print("gwt: the following stale worktrees will be removed:")
+    for branch, path in stale_pairs:
+        print(f"  branch={branch}  path={path}")
+    answer = input("Proceed? [y/N] ").strip().lower()
+    if answer != "y":
+        print("gwt: aborted")
+        return
+
+    # 5 — remove each stale worktree
+    for branch, path in stale_pairs:
+        safe_session = branch.replace("/", "_").replace(".", "-").replace(":", "-")
+        has_session = run(
+            ["tmux", "has-session", "-t", safe_session],
+            capture_output=True,
+        ).returncode
+        if has_session == 0:
+            run(["tmux", "kill-session", "-t", safe_session], check=True)
+            print(f"gwt: killed tmux session '{safe_session}'")
+
+        if Path(path, ".git").exists():
+            run(["git", "worktree", "remove", "--force", path], check=True)
+            print(f"gwt: removed worktree '{path}'")
+
+        run(["git", "branch", "-D", branch], check=True)
+        print(f"gwt: deleted branch '{branch}'")
+
+    run(["git", "worktree", "prune"], check=True)
+    print("gwt: pruned worktree metadata")
+
+
 def cmd_delete(args: argparse.Namespace) -> None:
     # 0 — ensure we're in a git repo
     rc, root = run_output(["git", "-C", ".", "rev-parse", "--show-toplevel"])
@@ -233,6 +322,9 @@ def main() -> None:
         nargs="?",
         help="worktree name to remove (omit for interactive fzf picker)",
     )
+    sub.add_parser(
+        "clean", help="remove worktrees whose upstream branch is gone",
+    )
 
     args = parser.parse_args()
 
@@ -243,6 +335,8 @@ def main() -> None:
         cmd_create(args)
     elif args.command == "delete":
         cmd_delete(args)
+    elif args.command == "clean":
+        cmd_clean(args)
 
 
 if __name__ == "__main__":

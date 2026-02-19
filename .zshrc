@@ -124,5 +124,5 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # This is suppposed to prevent sccache shutting down the server
-export SCCACHE_IDLE_TIMEOUT=0
+export SCCACHE_IDLE_TIMEOUT=2500
 export SCCACHE_CACHE_SIZE=20G
