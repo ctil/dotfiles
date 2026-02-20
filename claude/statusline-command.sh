@@ -3,6 +3,7 @@ input=$(cat)
 
 model=$(echo "$input" | jq -r '.model.display_name // "unknown"')
 session_name=$(echo "$input" | jq -r '.session_name // empty')
+agent=$(echo "$input" | jq -r '.agent // empty')
 used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 remaining=$(echo "$input" | jq -r '.context_window.remaining_percentage // empty')
 
@@ -29,6 +30,11 @@ fi
 
 # Model
 printf "${C_WHITE}%s${C_RESET}" "$model"
+
+# Agent indicator
+if [ "$agent" = "true" ]; then
+    printf "  \033[35m⚙\033[0m"
+fi
 
 # Context usage progress bar
 if [ -n "$used" ]; then
