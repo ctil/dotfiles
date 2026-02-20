@@ -21,6 +21,7 @@ ln -sf $PWD/starship.toml ~/.config
 mkdir -p ~/.claude
 ln -sf $PWD/claude/settings.json ~/.claude
 ln -sf $PWD/claude/settings_permissive.json ~/.claude
+ln -sf $PWD/claude/statusline-command.sh ~/.claude
 
 mkdir -p ~/.gemini
 ln -sf $PWD/gemini/settings.json ~/.gemini
