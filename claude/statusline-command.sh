@@ -13,6 +13,13 @@ C_GREEN='\033[32m'
 C_YELLOW='\033[33m'
 C_RED='\033[91m'
 
+# Starship prompt (first line only), --terminal-width 1 suppresses right-alignment padding
+starship_raw=$(starship prompt --terminal-width 1 2>/dev/null | head -n1)
+if [ -n "$starship_raw" ]; then
+    starship_clean=$(printf '%s' "$starship_raw" | sed 's/%{//g; s/%}//g; s/[[:space:]]*$//')
+    printf '%b  ' "$starship_clean"
+fi
+
 # Session name (only when set via /rename)
 if [ -n "$session_name" ]; then
     printf "${C_CYAN}%s${C_RESET}  " "$session_name"
