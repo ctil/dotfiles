@@ -21,7 +21,7 @@ fi
 # Model
 printf "${C_WHITE}%s${C_RESET}" "$model"
 
-# Context usage
+# Context usage progress bar
 if [ -n "$used" ]; then
     if [ "$used" -ge 80 ]; then
         C_BAR="$C_RED"
@@ -30,8 +30,16 @@ if [ -n "$used" ]; then
     else
         C_BAR="$C_GREEN"
     fi
-    printf "  ${C_WHITE}ctx${C_RESET} ${C_BAR}%s%%${C_RESET} used" "$used"
-    if [ -n "$remaining" ]; then
-        printf " ${C_WHITE}(${C_RESET}${C_CYAN}%s%%${C_RESET}${C_WHITE} left)${C_RESET}" "$remaining"
-    fi
+
+    bar_width=10
+    filled=$(( used * bar_width / 100 ))
+    empty=$(( bar_width - filled ))
+
+    bar=""
+    i=0
+    while [ $i -lt $filled ]; do bar="${bar}█"; i=$(( i + 1 )); done
+    i=0
+    while [ $i -lt $empty ]; do bar="${bar}░"; i=$(( i + 1 )); done
+
+    printf "  ${C_BAR}%s${C_RESET} ${C_BAR}%s%%${C_RESET}" "$bar" "$used"
 fi
