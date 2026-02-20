@@ -16,8 +16,10 @@ C_RED='\033[91m'
 # Starship prompt (first line only), --terminal-width 1 suppresses right-alignment padding
 starship_raw=$(starship prompt --terminal-width 1 2>/dev/null | head -n1)
 if [ -n "$starship_raw" ]; then
-    starship_clean=$(printf '%s' "$starship_raw" | sed 's/%{//g; s/%}//g; s/[[:space:]]*$//')
-    printf '%b  ' "$starship_clean"
+    ESC=$(printf '\033')
+    starship_clean=$(printf '%s' "$starship_raw" | sed "s/%{//g; s/%}//g; s/[[:space:]]*\(\(${ESC}\[[0-9;]*m\)*\)\$/\1/; s/[[:space:]]*\$//")
+
+    printf '%b\033[37m❯\033[0m ' "$starship_clean"
 fi
 
 # Session name (only when set via /rename)
