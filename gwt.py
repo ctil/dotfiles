@@ -253,6 +253,7 @@ def cmd_clean(args: argparse.Namespace) -> None:
             print(f"gwt: killed tmux session '{safe_session}'")
 
         if Path(path, ".git").exists():
+            print(f"gwt: removing worktree '{path}'...")
             run(["git", "worktree", "remove", "--force", path], check=True)
             print(f"gwt: removed worktree '{path}'")
 
