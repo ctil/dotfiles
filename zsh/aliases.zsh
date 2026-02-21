@@ -11,7 +11,7 @@ alias j="just"
 alias c="clear"
 alias sz="source ~/.zshrc"
 
-# Git
+# Git (many other aliases are defined in zsh/git/git.plugin.zsh)
 alias gam="git commit -a --amend --no-edit"
 alias gca="git commit -am "
 alias gl1="git log -1"
@@ -20,7 +20,10 @@ alias gdn='git diff $(git_main_branch)...HEAD --name-only'
 alias gwt="~/dotfiles/gwt.py"
 alias gwtc="~/dotfiles/gwt.py create"
 alias gwtd="~/dotfiles/gwt.py delete"
-alias lg="lazygit"
+
+# History
+alias h='history'
+alias hs='history | rg'
 
 # Simulate pbpaste/pbcopy if on Linux
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
@@ -33,7 +36,7 @@ alias vi="nvim"
 
 # Wyyerd Stuff
 alias dm="diesel migration"
-alias mr='cd ~/code/monorepo && nvm use'
+alias mr='cd ~/code/monorepo && fnm use'
 
 # Tmux
 alias tn="tmux new-session -s "

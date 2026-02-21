@@ -1,6 +1,7 @@
 brew "bat"
 brew "blueutil"
 brew "fzf"
+brew "fnm"
 brew "gh"
 brew "nvim"
 brew "ripgrep"
