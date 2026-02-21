@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Uncomment the following line to profile startup time
+# zmodload zsh/zprof
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -27,9 +30,19 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rust docker fzf history tmux)
+plugins=(git rust docker history tmux)
+
+DISABLE_AUTO_UPDATE=true
+skip_global_compinit=1
 
 source $ZSH/oh-my-zsh.sh
+
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 # Override the oh-my-zsh git plugin function that I used in aliases like "gcm"
 function git_main_branch() {
@@ -47,8 +60,6 @@ function git_main_branch() {
   return 1
 }
 
-# Enable completions
-compinit
 
 # History settings
 setopt hist_find_no_dups
@@ -61,17 +72,10 @@ export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--layout reverse"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source "/opt/homebrew/opt/fzf/shell/completion.zsh"
+source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
 
-# Lazy load nvm
-export NVM_DIR="$HOME/.nvm"
-nvm () {
-    unset -f nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # Load nvm
-    nvm $@ # Copy arguments after nvm
-}
-
-nvm use default
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Bump up the memory for node so tsc doesn't crash
 export NODE_OPTIONS="--max-old-space-size=8192"
@@ -126,3 +130,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # This is suppposed to prevent sccache shutting down the server
 export SCCACHE_IDLE_TIMEOUT=2500
 export SCCACHE_CACHE_SIZE=20G
+
+# Uncomment the following line to profile startup time
+#zprof
+
