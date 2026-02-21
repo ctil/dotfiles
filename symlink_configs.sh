@@ -3,7 +3,7 @@
 ln -sf $PWD/.vimrc ~
 ln -sf $PWD/.gitconfig ~
 ln -sf $PWD/.tmux.conf ~
-ln -sf $PWD/.zshrc ~
+ln -sf $PWD/zsh/zshrc ~/.zshrc
 ln -sf $PWD/.ripgreprc ~
 
 # VS Code
