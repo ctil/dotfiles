@@ -22,6 +22,10 @@ alias gwtc="~/dotfiles/gwt.py create"
 alias gwtd="~/dotfiles/gwt.py delete"
 alias lg="lazygit"
 
+# History
+alias h='history'
+alias hs='history | rg'
+
 # Simulate pbpaste/pbcopy if on Linux
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     alias pbcopy="xclip -selection clipboard"
@@ -33,7 +37,7 @@ alias vi="nvim"
 
 # Wyyerd Stuff
 alias dm="diesel migration"
-alias mr='cd ~/code/monorepo && nvm use'
+alias mr='cd ~/code/monorepo && fnm use'
 
 # Tmux
 alias tn="tmux new-session -s "
