@@ -9,10 +9,6 @@ fi
 # Install Brewfile dependencies
 brew bundle
 
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
-
 if [ ! -d "$HOME/.config/nvim" ]; then
     git clone https://github.com/ctil/nvim.git $HOME/.config/nvim
 fi
