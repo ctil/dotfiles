@@ -25,7 +25,7 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 bindkey '^[[Z' reverse-menu-complete
 
-# Git aliases
+# Git plugin
 source ~/dotfiles/zsh/git/git.plugin.zsh
 
 # History settings

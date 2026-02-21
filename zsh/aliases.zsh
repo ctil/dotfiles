@@ -11,7 +11,7 @@ alias j="just"
 alias c="clear"
 alias sz="source ~/.zshrc"
 
-# Git
+# Git (many other aliases are defined in zsh/git/git.plugin.zsh)
 alias gam="git commit -a --amend --no-edit"
 alias gca="git commit -am "
 alias gl1="git log -1"
@@ -20,7 +20,6 @@ alias gdn='git diff $(git_main_branch)...HEAD --name-only'
 alias gwt="~/dotfiles/gwt.py"
 alias gwtc="~/dotfiles/gwt.py create"
 alias gwtd="~/dotfiles/gwt.py delete"
-alias lg="lazygit"
 
 # History
 alias h='history'
