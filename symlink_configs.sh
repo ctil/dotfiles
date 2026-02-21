@@ -5,7 +5,6 @@ ln -sf $PWD/.gitconfig ~
 ln -sf $PWD/.tmux.conf ~
 ln -sf $PWD/.zshrc ~
 ln -sf $PWD/.ripgreprc ~
-ln -sf $PWD/aliases.zsh ~/.oh-my-zsh/custom
 
 # VS Code
 if [ -d ~/Library/Application\ Support/Code/User ]; then
