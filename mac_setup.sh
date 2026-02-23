@@ -22,6 +22,7 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 fi
 
 mkdir -p $HOME/code
+mkdir -p $HOME/.zsh/cache
 
 # Enable key repeat
 defaults write -g ApplePressAndHoldEnabled -bool false

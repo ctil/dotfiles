@@ -14,7 +14,15 @@ else
   compinit -C
 fi
 
+# Cache completion results (speeds up git branch completion etc.)
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# Disable remote branch guessing in git checkout completion (fewer git calls)
+export GIT_COMPLETION_CHECKOUT_NO_GUESS=1
+
 # Completion styles (menu selection with highlighting + descriptions)
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*:matches' group 'yes'
@@ -24,6 +32,8 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 bindkey '^[[Z' reverse-menu-complete
+# Esc to exit completion mode
+# bindkey -M menuselect '\e' send-break
 
 # Git plugin
 source ~/dotfiles/zsh/git/git.plugin.zsh
