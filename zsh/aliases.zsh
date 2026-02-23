@@ -34,9 +34,10 @@ fi
 alias notify="~/notify_done.sh"
 alias vi="nvim"
 
-# Wyyerd Stuff
+# Wyyerd/Atlas Stuff
 alias dm="diesel migration"
 alias mr='cd ~/code/monorepo && fnm use'
+alias jn="just nightly=1"
 
 # Tmux
 alias tn="tmux new-session -s "
