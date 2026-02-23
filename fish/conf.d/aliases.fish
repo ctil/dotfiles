@@ -26,7 +26,7 @@ alias ta='tmux attach -t'
 alias cl='claude'
 alias cly='claude --settings ~/.claude/settings_permissive.json'
 alias clu='claude update'
-alias clq='claude -p --output-format text --no-tools --no-skills --model haiku'
+alias clq='claude -p --no-tools --no-skills --model haiku'
 
 # Work
 alias dm='diesel migration'
