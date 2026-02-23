@@ -29,10 +29,14 @@ ln -sf $PWD/gemini/settings.json ~/.gemini
 # Fish shell
 mkdir -p ~/.config/fish/conf.d
 mkdir -p ~/.config/fish/functions
+mkdir -p ~/.config/fish/completions
 ln -sf $PWD/fish/config.fish ~/.config/fish/config.fish
 for f in $PWD/fish/conf.d/*.fish; do
   ln -sf "$f" ~/.config/fish/conf.d/$(basename "$f")
 done
 for f in $PWD/fish/functions/*.fish; do
   ln -sf "$f" ~/.config/fish/functions/$(basename "$f")
+done
+for f in $PWD/fish/completions/*.fish; do
+  ln -sf "$f" ~/.config/fish/completions/$(basename "$f")
 done
