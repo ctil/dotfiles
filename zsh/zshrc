@@ -6,7 +6,7 @@ export PATH="$PATH:$HOME/go/bin"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Completion — single cached call (must come before anything that calls compdef)
-fpath=(~/.bun $fpath)
+fpath=(/opt/homebrew/share/zsh/site-functions ~/.bun $fpath)
 autoload -Uz compinit
 if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
   compinit
