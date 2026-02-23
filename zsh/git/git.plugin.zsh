@@ -7,6 +7,56 @@
 #   lib/git.zsh (helper functions only — prompt functions omitted, handled by starship)
 
 # ---------------------------------------------------------------------------
+# Fast git completion
+# ---------------------------------------------------------------------------
+#
+# The native _git completion calls __git_describe_commit on every item, which
+# does per-item git subprocess calls — making both initial display and menu
+# cycling slow.
+#
+# All overridden functions have (( $+functions[...] )) || guards in _git, so
+# defining them here before _git first loads ensures our versions are used.
+#
+# Cache invalidates automatically when packed-refs or refs/heads changes.
+
+# Shared helper: list local branch names, file-cached per repo.
+_git_cached_local_branches() {
+  local git_dir cache_file
+  git_dir=$(git rev-parse --git-dir 2>/dev/null) || return 1
+  git_dir=${git_dir:A}
+  cache_file="${HOME}/.zsh/cache/git_branches_${git_dir//\//_}"
+
+  if [[ ! -f "$cache_file" ]] \
+     || [[ -f "${git_dir}/packed-refs" && "${git_dir}/packed-refs" -nt "$cache_file" ]] \
+     || [[ "${git_dir}/refs/heads" -nt "$cache_file" ]]; then
+    mkdir -p "${HOME}/.zsh/cache"
+    git for-each-ref --format='%(refname:short)' refs/heads 2>/dev/null >| "$cache_file"
+  fi
+
+  local -a branch_names
+  branch_names=(${(f)"$(<$cache_file)"})
+  compadd "$@" -a branch_names
+}
+
+# Used by: git checkout -b/-B, git branch, etc.
+__git_branch_names() { _git_cached_local_branches "$@" }
+
+# Used by: git checkout <TAB> (via __git_heads → __git_commits_prefer_recent)
+__git_heads_local() { _git_cached_local_branches "$@" }
+
+# Skip "recent branches" group — local branches already shown by __git_heads_local,
+# and _describe with commit descriptions makes menu cycling slow.
+__git_recent_branches() { return 1 }
+
+# Remote branch names without remote/ prefix (DWIM: checkout feature → origin/feature).
+# Override to skip __git_describe_commit, which makes cycling slow.
+__git_remote_branch_names_noprefix() {
+  local -a branch_names
+  branch_names=(${${${${(f)"$(git for-each-ref --format='%(refname)' refs/remotes 2>/dev/null)"}#refs/remotes/}#*/}:#HEAD})
+  compadd "$@" -a branch_names
+}
+
+# ---------------------------------------------------------------------------
 # Helper functions (from lib/git.zsh)
 # ---------------------------------------------------------------------------
 
