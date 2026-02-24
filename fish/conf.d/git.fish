@@ -11,6 +11,15 @@ alias gcb='git checkout -b'
 alias gcm='git checkout (git_main_branch)'
 alias gcd='git checkout (git_develop_branch)'
 
+function git --wraps git
+    if test "$argv[1]" = diff
+        # Exclude files marked linguist-generated=true in .gitattributes (e.g. generated code)
+        command git diff $argv[2..] -- . ':(exclude,attr:linguist-generated=true)'
+    else
+        command git $argv
+    end
+end
+
 alias gd='git diff'
 
 alias gf='git fetch'
