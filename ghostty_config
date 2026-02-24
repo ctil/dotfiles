@@ -8,7 +8,7 @@ keybind = ctrl+enter=clear_screen
 keybind = shift+enter=text:\n
 
 # Some other favorite themes: Atom, catppuccin-frappe
-theme = tokyonight
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 font-size = 15
 
 # No ligatures

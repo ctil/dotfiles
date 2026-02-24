@@ -3,8 +3,6 @@
 	co = checkout
 	st = status
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	dt = difftool -d
-	dn = diff --name-only master
 	wt = worktree
 
 [push]
@@ -20,21 +18,26 @@
 
 [core]
 	editor = nvim
-	; pager = less -F -X
     pager = delta
 
 [interactive]
     diffFilter = delta --color-only
 
+[include]
+    path = ~/.delta/themes.gitconfig
+
 [delta]
     navigate = true    # use n and N to move between diff sections
-    ; side-by-side = true
+    side-by-side = true
     line-numbers = true
     true-color = always
-
-    # delta detects terminal colors automatically; set one of these to disable auto-detection
-    # dark = true
-    # light = true
+    dark = true
+    features = mellow-barbet
+    syntax-theme = Coldark-Dark
+    ; some other favorite themes
+    ; syntax-theme = DarkNeon
+    ; syntax-theme = TwoDark
+    ; syntax-theme = Solarized (dark)
 
 [merge]
     conflictStyle = zdiff3

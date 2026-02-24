@@ -21,6 +21,11 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
+if [ ! -d "$HOME/.delta" ]; then
+    mkdir -p $HOME/.delta
+    git clone https://github.com/dandavison/delta $HOME/.delta
+fi
+
 mkdir -p $HOME/code
 mkdir -p $HOME/.zsh/cache
 
