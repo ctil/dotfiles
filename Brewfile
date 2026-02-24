@@ -1,6 +1,7 @@
 brew "bat"
 brew "blueutil"
 brew "fzf"
+brew "git-delta"
 brew "fnm"
 brew "gh"
 brew "nvim"
