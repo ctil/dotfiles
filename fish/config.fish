@@ -47,6 +47,9 @@ if type -q zoxide
     zoxide init fish | source
 end
 
+# Disable fzf ctrl-r to use fish's native history search
+set -g FZF_CTRL_R_COMMAND ''
+
 if type -q fzf
     fzf --fish | source
 end
