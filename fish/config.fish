@@ -9,6 +9,8 @@ fish_add_path $HOME/.bun/bin
 # Environment variables
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx RIPGREP_CONFIG_PATH $HOME/.ripgreprc
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 
 # fzf
 set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
