@@ -33,10 +33,10 @@
     true-color = always
     dark = true
     features = mellow-barbet
-    syntax-theme = Coldark-Dark
+    ; syntax-theme = Coldark-Dark
     ; some other favorite themes
     ; syntax-theme = DarkNeon
-    ; syntax-theme = TwoDark
+    syntax-theme = TwoDark
     ; syntax-theme = Solarized (dark)
 
 [merge]
