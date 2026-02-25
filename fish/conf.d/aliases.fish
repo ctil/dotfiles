@@ -36,23 +36,6 @@ abbr -a gwtc '~/dotfiles/gwt.py create'
 abbr -a gwtd '~/dotfiles/gwt.py delete'
 abbr -a mr 'cd ~/code/monorepo && fnm use'
 
-# Function to create a jira issue and move it to the 'New (Ready to assign)' column
-function jira-create-andromeda
-    script -q /tmp/jira-create-output jira issue create --custom team=e79aceb4-c14d-4932-b303-a055bf8181a9 $argv
-    set issue_key (string match -r 'INT-\d+' < /tmp/jira-create-output)
-    if test -n "$issue_key"
-        jira issue move $issue_key "New (Ready to Assign)"
-    end
-    echo $issue_key | pbcopy
-    echo "Issue key copied to clipboard"
-end
-
-abbr -a jiral "jira issue list -q 'cf[10001] = e79aceb4-c14d-4932-b303-a055bf8181a9' -s 'New (ready to assign)' -s 'In Progress' -s 'Awaiting Review'"
-abbr -a jiraln "jira issue list -q 'cf[10001] = e79aceb4-c14d-4932-b303-a055bf8181a9' -s 'New (ready to assign)'"
-abbr -a jiralm "jira issue list -q 'cf[10001] = e79aceb4-c14d-4932-b303-a055bf8181a9' -a (jira me)"
-abbr -a jirac "jira-create-andromeda -tStory"
-
-
 # Linux clipboard simulation
 if uname | grep -q Linux
     abbr -a pbcopy 'xclip -selection clipboard'
