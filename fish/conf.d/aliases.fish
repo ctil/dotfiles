@@ -1,43 +1,43 @@
 # Navigation
-alias b='cd ..'
-alias bb='cd ../../'
-alias bbb='cd ../../../'
-alias bbbb='cd ../../../../'
-alias bbbbb='cd ../../../../../'
+abbr -a b 'cd ..'
+abbr -a bb 'cd ../../'
+abbr -a bbb 'cd ../../../'
+abbr -a bbbb 'cd ../../../../'
+abbr -a bbbbb 'cd ../../../../../'
 
 # General
-alias ltr='ls -ltr'
-alias f='rg --files -g'
-alias j='just'
-alias c='clear'
-alias sz='exec fish'
-alias vi='nvim'
-alias notify='~/notify_done.sh'
-alias h='history'
-alias hs='history | rg'
+abbr -a ltr 'ls -ltr'
+abbr -a f 'rg --files -g'
+abbr -a j just
+abbr -a c clear
+abbr -a sz 'exec fish'
+abbr -a vi nvim
+abbr -a notify '~/notify_done.sh'
+abbr -a h history
+abbr -a hs 'history | rg'
 
 # Tmux
-alias tn='tmux new-session -s'
-alias tk='tmux kill-session -t'
-alias tl='tmux list-sessions'
-alias ta='tmux attach -t'
+abbr -a tn 'tmux new-session -s'
+abbr -a tk 'tmux kill-session -t'
+abbr -a tl 'tmux list-sessions'
+abbr -a ta 'tmux attach -t'
 
 # Claude code
-alias cl='claude'
-alias cly='claude --settings ~/.claude/settings_permissive.json'
-alias clu='claude update'
-alias clq='claude -p --no-chrome --model haiku'
+abbr -a cl claude
+abbr -a cly 'claude --settings ~/.claude/settings_permissive.json'
+abbr -a clu 'claude update'
+abbr -a clq 'claude -p --no-chrome --model haiku'
 
 # Work
-alias dm='diesel migration'
-alias jn='just nightly=1'
-alias gwt='~/dotfiles/gwt.py'
-alias gwtc='~/dotfiles/gwt.py create'
-alias gwtd='~/dotfiles/gwt.py delete'
-alias mr='cd ~/code/monorepo && fnm use'
+abbr -a dm 'diesel migration'
+abbr -a jn 'just nightly=1'
+abbr -a gwt '~/dotfiles/gwt.py'
+abbr -a gwtc '~/dotfiles/gwt.py create'
+abbr -a gwtd '~/dotfiles/gwt.py delete'
+abbr -a mr 'cd ~/code/monorepo && fnm use'
 
 # Linux clipboard simulation
 if uname | grep -q Linux
-    alias pbcopy='xclip -selection clipboard'
-    alias pbpaste='xclip -selection clipboard -o'
+    abbr -a pbcopy 'xclip -selection clipboard'
+    abbr -a pbpaste 'xclip -selection clipboard -o'
 end

@@ -1,64 +1,43 @@
-# Git aliases
+# Git abbreviations
 
-alias g='git'
-alias gb='git branch'
-alias gba='git branch --all'
-alias gbd='git branch --delete'
-alias gbD='git branch --delete --force'
+abbr -a g git
+abbr -a gb 'git branch'
+abbr -a gba 'git branch --all'
+abbr -a gbd 'git branch --delete'
+abbr -a gbD 'git branch --delete --force'
 
-alias gco='git checkout'
-alias gcb='git checkout -b'
-alias gcm='git checkout (git_main_branch)'
-alias gcd='git checkout (git_develop_branch)'
+abbr -a gco 'git checkout'
+abbr -a gcb 'git checkout -b'
+abbr -a gcm 'git checkout (git_main_branch)'
+abbr -a gcd 'git checkout (git_develop_branch)'
 
-function git --wraps git
-    if test "$argv[1]" = diff
-        # Exclude files marked linguist-generated=true in .gitattributes (e.g. generated code)
-        command git diff $argv[2..] -- . ':(exclude,attr:linguist-generated=true)'
-    else
-        command git $argv
-    end
-end
+abbr -a gd 'git diff'
 
-alias gd='git diff'
-
-alias gf='git fetch'
-alias gg='git gui citool'
-alias glgg='git log --graph'
-alias glgga='git log --graph --decorate --all'
-alias glgm='git log --graph --max-count=10'
-alias glods='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short'
-alias glod='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset"'
-alias glola='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --all'
-alias glols='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --stat'
+abbr -a gf 'git fetch'
 alias glol='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
-alias glog='git log --oneline --decorate --graph'
-alias gloga='git log --oneline --decorate --graph --all'
 
-alias glp='git log --pretty'
-alias glg='git log --stat'
-alias glgp='git log --stat --patch'
-alias gfg='git ls-files | grep'
-alias gm='git merge'
-alias gmom='git merge origin/(git_main_branch)'
+abbr -a glp 'git log --pretty'
+abbr -a glg 'git log --stat'
+abbr -a gm 'git merge'
+abbr -a gmom 'git merge origin/(git_main_branch)'
 
-alias gl='git pull'
+abbr -a gl 'git pull'
 
-alias gp='git push'
-alias gpf='git push --force-with-lease --force-if-includes'
-alias gpff='git push --force'
-alias gpod='git push origin --delete'
+abbr -a gp 'git push'
+abbr -a gpf 'git push --force-with-lease --force-if-includes'
+abbr -a gpff 'git push --force'
+abbr -a gpod 'git push origin --delete'
 
-alias grb='git rebase'
-alias grbd='git rebase (git_develop_branch)'
-alias grbm='git rebase (git_main_branch)'
-alias grbom='git rebase origin/(git_main_branch)'
+abbr -a grb 'git rebase'
+abbr -a grbd 'git rebase (git_develop_branch)'
+abbr -a grbm 'git rebase (git_main_branch)'
+abbr -a grbom 'git rebase origin/(git_main_branch)'
 
-alias gst='git status'
+abbr -a gst 'git status'
 
 # From aliases.zsh
-alias gam='git commit -a --amend --no-edit'
-alias gca='git commit -am'
-alias gl1='git log -1'
-alias gfm='git fetch origin (git_main_branch):(git_main_branch)'
-alias gdn='git diff (git_main_branch)...HEAD --name-only'
+abbr -a gam 'git commit -a --amend --no-edit'
+abbr -a gca 'git commit -am'
+abbr -a gl1 'git log -1'
+abbr -a gfm 'git fetch origin (git_main_branch):(git_main_branch)'
+abbr -a gdn 'git diff (git_main_branch)...HEAD --name-only'
