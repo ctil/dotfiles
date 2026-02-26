@@ -7,13 +7,27 @@ keybind = ctrl+enter=clear_screen
 # Shift enter keybinding for claude code
 keybind = shift+enter=text:\n
 
-# Some other favorite themes: Atom, catppuccin-frappe
-theme = dark:Catppuccin Mocha,light:Catppuccin Latte
-font-size = 15
-
 # No ligatures
 font-feature = -calt, -liga, -dlig
 
+# Misc features
+font-size = 15
 desktop-notifications = true
-
 command = /opt/homebrew/bin/fish
+
+# ------------------------------------------------------------------------------
+# Themes
+# ------------------------------------------------------------------------------
+
+# Muted
+# theme = Zenwritten Dark
+# theme = Firewatch
+
+# Dark
+# theme = TokyoNight
+# theme = Dark Modern
+
+# Bold colors
+# theme = Oxocarbon
+theme = Carbonfox
+

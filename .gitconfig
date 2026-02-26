@@ -24,22 +24,50 @@
 [interactive]
     diffFilter = delta --color-only
 
-[include]
-    path = ~/.delta/themes.gitconfig
-
 [delta]
     navigate = true    # use n and N to move between diff sections
     side-by-side = true
     line-numbers = true
     true-color = always
-    dark = true
-    features = mellow-barbet
-    ; syntax-theme = Coldark-Dark
-    ; some other favorite themes
-    ; syntax-theme = DarkNeon
-    syntax-theme = TwoDark
-    ; syntax-theme = Solarized (dark)
+    features = TokyoNight
 
 [merge]
     conflictStyle = zdiff3
 
+; Custom delta themes
+[include]
+    path = ~/.delta/themes.gitconfig
+
+[delta "TokyoNight"]
+    # Based on folke/tokyonight.nvim (night style)
+    # bg=#1a1b26, bg_dark=#16161e, red=#f7768e, green=#9ece6a
+    # magenta=#bb9af7, blue=#7aa2f7, cyan=#7dcfff, yellow=#e0af68
+    dark = true
+    syntax-theme = TwoDark
+
+    # Diff backgrounds: darkened red/green tinted from the palette
+    minus-style                   = syntax "#37222c"
+    minus-emph-style              = syntax "#6b2737"
+    plus-style                    = syntax "#20303b"
+    plus-emph-style               = syntax "#2c5a3e"
+
+    # Line numbers
+    line-numbers                  = true
+    line-numbers-zero-style       = "#3b4261"
+    line-numbers-minus-style      = "#f7768e"
+    line-numbers-plus-style       = "#9ece6a"
+    line-numbers-left-style       = "#1f2335"
+    line-numbers-right-style      = "#1f2335"
+
+    # Hunk headers
+    hunk-header-style             = file line-number syntax
+    hunk-header-file-style        = "#7aa2f7"
+    hunk-header-line-number-style = "#e0af68"
+    hunk-header-decoration-style  = "#1f2335" box ul
+
+    # File decoration
+    file-style                    = "#7dcfff" bold
+    file-decoration-style         = "#1f2335" ul
+
+    # Commit decoration
+    commit-decoration-style       = "#bb9af7" bold box
