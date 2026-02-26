@@ -12,6 +12,7 @@ abbr -a gcm 'git checkout (git_main_branch)'
 abbr -a gcd 'git checkout (git_develop_branch)'
 
 abbr -a gd 'git diff'
+abbr -a gdm 'git diff (git_main_branch)'
 
 abbr -a gf 'git fetch'
 alias glol='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
@@ -19,6 +20,7 @@ alias glol='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgre
 abbr -a glp 'git log --pretty'
 abbr -a glg 'git log --stat'
 abbr -a gm 'git merge'
+abbr -a gmd 'git merge (git_develop_branch)'
 abbr -a gmom 'git merge origin/(git_main_branch)'
 
 abbr -a gl 'git pull'
