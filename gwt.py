@@ -2,8 +2,9 @@
 """gwt — Manage git worktrees and tmux sessions
 
 Usage:
-  gwt create [NAME]   → create/reuse worktrees and generate a tmux session
+  gwt create NAME     → create a worktree and tmux session
   gwt delete [NAME]   → remove worktree NAME and kill its tmux session
+  gwt switch          → switch between worktrees
   gwt clean           → remove worktrees whose upstream branch is gone
   gwt                  → show help
 """
@@ -34,6 +35,20 @@ def run_output(cmd: list[str]) -> tuple[int, str]:
 def die(msg: str) -> NoReturn:
     print(f"gwt: {msg}", file=sys.stderr)
     sys.exit(1)
+
+
+def ensure_git_repo() -> str:
+    """Ensure we're in a git repo, chdir to root, and return the root path."""
+    rc, root = run_output(["git", "-C", ".", "rev-parse", "--show-toplevel"])
+    if rc != 0:
+        die("not inside a Git repository")
+    os.chdir(root)
+    return root
+
+
+def safe_session_name(name: str) -> str:
+    """Convert a branch name to a tmux-safe session name."""
+    return name.replace("/", "_").replace(".", "-").replace(":", "-")
 
 
 def detect_main_branch() -> str:
@@ -113,26 +128,36 @@ def fzf_pick_worktree_delete(root: str) -> tuple[str, str]:
     return wtdir, name
 
 
-def cmd_create(args: argparse.Namespace) -> None:
-    # 0 — ensure we're in a git repo
-    rc, root = run_output(["git", "-C", ".", "rev-parse", "--show-toplevel"])
-    if rc != 0:
-        die("not inside a Git repository")
-    os.chdir(root)
+def cmd_switch(args: argparse.Namespace) -> None:
+    ensure_git_repo()
 
+    wtdir, name = fzf_pick_worktree()
+    safe_session = safe_session_name(name)
+
+    has_session = run(
+        ["tmux", "has-session", "-t", safe_session],
+        capture_output=True,
+    ).returncode
+    if has_session != 0:
+        die(f"no tmux session '{safe_session}' (use 'gwt create' first)")
+
+    if os.environ.get("TMUX"):
+        run(["tmux", "switch-client", "-t", safe_session], check=True)
+    else:
+        run(["tmux", "attach", "-t", safe_session], check=True)
+
+
+def cmd_create(args: argparse.Namespace) -> None:
+    root = ensure_git_repo()
     repo_name = Path(root).name
     worktrees_base = WORKTREES_BASE / repo_name
     worktrees_base.mkdir(parents=True, exist_ok=True)
 
-    # 1 — pick or create the worktree
-    if args.name is None:
-        wtdir, name = fzf_pick_worktree()
-    else:
-        name = args.name
-        safe_name = name.replace("/", "_")
-        wtdir = str(worktrees_base / safe_name)
+    name = args.name
+    safe_name = name.replace("/", "_")
+    wtdir = str(worktrees_base / safe_name)
 
-    safe_session = name.replace("/", "_").replace(".", "-").replace(":", "-")
+    safe_session = safe_session_name(name)
 
     # 2 — detect main branch
     main_branch = detect_main_branch()
@@ -192,10 +217,7 @@ def parse_worktree_map() -> dict[str, str]:
 
 
 def cmd_clean(args: argparse.Namespace) -> None:
-    rc, root = run_output(["git", "-C", ".", "rev-parse", "--show-toplevel"])
-    if rc != 0:
-        die("not inside a Git repository")
-    os.chdir(root)
+    root = ensure_git_repo()
 
     # 1 — fetch and prune remote tracking branches
     print("gwt: fetching and pruning remotes...")
@@ -243,7 +265,7 @@ def cmd_clean(args: argparse.Namespace) -> None:
 
     # 5 — remove each stale worktree
     for branch, path in stale_pairs:
-        safe_session = branch.replace("/", "_").replace(".", "-").replace(":", "-")
+        safe_session = safe_session_name(branch)
         has_session = run(
             ["tmux", "has-session", "-t", safe_session],
             capture_output=True,
@@ -265,12 +287,7 @@ def cmd_clean(args: argparse.Namespace) -> None:
 
 
 def cmd_delete(args: argparse.Namespace) -> None:
-    # 0 — ensure we're in a git repo
-    rc, root = run_output(["git", "-C", ".", "rev-parse", "--show-toplevel"])
-    if rc != 0:
-        die("not inside a Git repository")
-    os.chdir(root)
-
+    root = ensure_git_repo()
     repo_name = Path(root).name
     worktrees_base = WORKTREES_BASE / repo_name
 
@@ -283,7 +300,7 @@ def cmd_delete(args: argparse.Namespace) -> None:
         wtdir = str(worktrees_base / safe_name)
 
     # 2 — kill tmux session if it exists
-    safe_session = name.replace("/", "_").replace(".", "-").replace(":", "-")
+    safe_session = safe_session_name(name)
     has_session = run(
         ["tmux", "has-session", "-t", safe_session],
         capture_output=True,
@@ -311,8 +328,7 @@ def main() -> None:
     )
     p_create.add_argument(
         "name",
-        nargs="?",
-        help="worktree/branch name (omit for interactive fzf picker)",
+        help="worktree/branch name",
     )
 
     p_delete = sub.add_parser(
@@ -322,6 +338,9 @@ def main() -> None:
         "name",
         nargs="?",
         help="worktree name to remove (omit for interactive fzf picker)",
+    )
+    sub.add_parser(
+        "switch", help="switch to an existing worktree's tmux session",
     )
     sub.add_parser(
         "clean", help="remove worktrees whose upstream branch is gone",
@@ -336,6 +355,8 @@ def main() -> None:
         cmd_create(args)
     elif args.command == "delete":
         cmd_delete(args)
+    elif args.command == "switch":
+        cmd_switch(args)
     elif args.command == "clean":
         cmd_clean(args)
 
