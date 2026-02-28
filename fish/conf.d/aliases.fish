@@ -7,7 +7,7 @@ abbr -a bbbbb 'cd ../../../../../'
 
 # General
 abbr -a ltr 'ls -ltr'
-abbr -a f 'rg --files -g'
+abbr -a f 'fd'
 abbr -a j just
 abbr -a c clear
 abbr -a sz 'exec fish'

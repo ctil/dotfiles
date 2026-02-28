@@ -1,6 +1,7 @@
 brew "bat"
 brew "blueutil"
 brew "fish"
+brew "fd"
 brew "fnm"
 brew "fzf"
 brew "gh"
