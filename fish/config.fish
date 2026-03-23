@@ -32,9 +32,6 @@ set -gx CFLAGS "-I$OPENSSL_INCLUDE_DIR"
 set -gx CPPFLAGS "-I$OPENSSL_INCLUDE_DIR"
 set -gx LDFLAGS "-L$OPENSSL_LIB_DIR"
 
-# Docker Compose
-set -gx COMPOSE_PROJECT_NAME monorepo
-
 # Bun
 set -gx BUN_INSTALL $HOME/.bun
 
