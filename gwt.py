@@ -258,8 +258,8 @@ def cmd_clean(args: argparse.Namespace) -> None:
     print("gwt: the following stale worktrees will be removed:")
     for branch, path in stale_pairs:
         print(f"  branch={branch}  path={path}")
-    answer = input("Proceed? [y/N] ").strip().lower()
-    if answer != "y":
+    answer = input("Proceed? [Y/n] ").strip().lower()
+    if answer == "n":
         print("gwt: aborted")
         return
 
