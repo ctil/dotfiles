@@ -309,12 +309,21 @@ def cmd_delete(args: argparse.Namespace) -> None:
         run(["tmux", "kill-session", "-t", safe_session], check=True)
         print(f"gwt: killed tmux session '{safe_session}'")
 
-    # 3 — remove the worktree
+    # 3 — get the branch name before removing the worktree
+    rc, branch = run_output(["git", "-C", wtdir, "rev-parse", "--abbrev-ref", "HEAD"])
+    branch = branch if rc == 0 else None
+
+    # 4 — remove the worktree
     if Path(wtdir, ".git").exists():
         run(["git", "worktree", "remove", wtdir], check=True)
         print(f"gwt: removed worktree '{wtdir}'")
     else:
         print(f"gwt: no worktree found at '{wtdir}'")
+
+    # 5 — delete the local branch
+    if branch and branch not in ("HEAD", ""):
+        run(["git", "branch", "-D", branch], check=True)
+        print(f"gwt: deleted branch '{branch}'")
 
 
 def main() -> None:
