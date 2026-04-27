@@ -12,7 +12,8 @@
       "Bash(npm search:*)",
       "Bash(cargo:*)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "auto"
   },
   "model": "opus[1m]",
   "hooks": {
@@ -40,12 +41,15 @@
     "skill-creator@claude-plugins-official": true,
     "playwright@claude-plugins-official": true
   },
-  "voiceEnabled": true,
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
+  "preferredNotifChannel": "ghostty",
+  "voiceEnabled": true,
   "trustDirectories": [
     "~/worktrees/*"
   ],
   "feedbackSurveyState": {
     "lastShownTime": 1754081867486
-  }
+  },
+  "skipAutoPermissionPrompt": true
 }
