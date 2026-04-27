@@ -315,7 +315,15 @@ def cmd_delete(args: argparse.Namespace) -> None:
 
     # 4 — remove the worktree
     if Path(wtdir, ".git").exists():
-        run(["git", "worktree", "remove", wtdir], check=True)
+        cmd = ["git", "worktree", "remove", wtdir]
+        if args.force:
+            cmd.append("--force")
+        result = run(cmd, capture_output=True, text=True)
+        if result.returncode != 0:
+            stderr = result.stderr.strip()
+            if "modified or untracked files" in stderr:
+                die(f"'{wtdir}' contains modified or untracked files; re-run with --force to delete")
+            die(stderr or f"failed to remove worktree '{wtdir}'")
         print(f"gwt: removed worktree '{wtdir}'")
     else:
         print(f"gwt: no worktree found at '{wtdir}'")
@@ -347,6 +355,11 @@ def main() -> None:
         "name",
         nargs="?",
         help="worktree name to remove (omit for interactive fzf picker)",
+    )
+    p_delete.add_argument(
+        "-f", "--force",
+        action="store_true",
+        help="force removal even with modified or untracked files",
     )
     sub.add_parser(
         "switch", help="switch to an existing worktree's tmux session",
