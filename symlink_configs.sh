@@ -32,3 +32,6 @@ ln -sf $PWD/fish/config.fish ~/.config/fish/config.fish
 ln -sfn $PWD/fish/conf.d ~/.config/fish/conf.d
 ln -sfn $PWD/fish/functions ~/.config/fish/functions
 ln -sfn $PWD/fish/completions ~/.config/fish/completions
+
+# Misc
+ln -sf $PWD/gh-dash-config.yaml ~/.config/gh-dash/config.yml
