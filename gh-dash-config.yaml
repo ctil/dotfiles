@@ -85,6 +85,7 @@ keybindings:
     prs:
       - key: D
         command: gh pr ready --undo {{.PrNumber}} --repo {{.RepoName}}
+        name: "Mark as Draft"
 repoPaths: {}
 theme:
     ui:

@@ -12,9 +12,10 @@
       "Bash(npm search:*)",
       "Bash(cargo:*)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -33,15 +34,17 @@
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": false,
+    "lua-lsp@claude-plugins-official": false,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "playground@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true
+    "playground@claude-plugins-official": false,
+    "skill-creator@claude-plugins-official": false,
+    "playwright@claude-plugins-official": false
   },
   "effortLevel": "medium",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
+  "showClearContextOnPlanAccept": true,
   "preferredNotifChannel": "ghostty",
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
