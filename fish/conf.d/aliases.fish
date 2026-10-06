@@ -41,3 +41,6 @@ if uname | grep -q Linux
     abbr -a pbcopy 'xclip -selection clipboard'
     abbr -a pbpaste 'xclip -selection clipboard -o'
 end
+
+# Tools
+abbr -a tf terraform

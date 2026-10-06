@@ -42,9 +42,9 @@
     "playwright@claude-plugins-official": false
   },
   "effortLevel": "medium",
+  "showClearContextOnPlanAccept": true,
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "showClearContextOnPlanAccept": true,
   "preferredNotifChannel": "ghostty",
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
