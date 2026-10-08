@@ -6,6 +6,7 @@ $hostname\
 $localip\
 $directory\
 $python\
+$kubernetes\
 $git_branch\
 $git_commit\
 $git_state\
@@ -23,6 +24,12 @@ $container\
 $shell\
 $character
 """
+
+[kubernetes]
+disabled = false
+symbol = "☸ "
+style = "bright-cyan"
+format = '[$symbol$context( \($namespace\))]($style) '
 
 [fill]
 symbol = " "
