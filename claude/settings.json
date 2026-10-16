@@ -36,7 +36,7 @@
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": false,
     "lua-lsp@claude-plugins-official": false,
-    "rust-analyzer-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": false,
     "playground@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": false,
     "playwright@claude-plugins-official": false

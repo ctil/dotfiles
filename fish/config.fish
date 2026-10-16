@@ -38,6 +38,7 @@ set -gx BUN_INSTALL $HOME/.bun
 # sccache
 set -gx SCCACHE_IDLE_TIMEOUT 2500
 set -gx SCCACHE_CACHE_SIZE 20G
+set -gx SCCACHE_CLIENT_SIDE 1
 
 # Tool init
 fnm env --use-on-cd --shell fish | source
