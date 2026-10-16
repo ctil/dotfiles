@@ -4,6 +4,7 @@ alias bb="cd ../../"
 alias bbb="cd ../../../"
 alias bbbb="cd ../../../../"
 alias bbbbb="cd ../../../../../"
+alias root='cd "$(git rev-parse --show-toplevel)"'
 
 alias ltr="ls -ltr"
 alias f="rg --files -g "

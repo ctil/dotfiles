@@ -4,6 +4,7 @@ abbr -a bb 'cd ../../'
 abbr -a bbb 'cd ../../../'
 abbr -a bbbb 'cd ../../../../'
 abbr -a bbbbb 'cd ../../../../../'
+abbr -a root 'cd (git rev-parse --show-toplevel)'
 
 # General
 abbr -a ltr 'ls -ltr'
@@ -34,7 +35,7 @@ abbr -a jn 'just nightly=1'
 abbr -a gwt '~/dotfiles/gwt.py'
 abbr -a gwtc '~/dotfiles/gwt.py create'
 abbr -a gwtd '~/dotfiles/gwt.py delete'
-abbr -a mr 'cd ~/code/monorepo && fnm use'
+abbr -a mr 'cd (git rev-parse --show-toplevel)'
 
 # Linux clipboard simulation
 if uname | grep -q Linux
