@@ -16,6 +16,30 @@
     "defaultMode": "auto"
   },
   "model": "opus",
+  "skillOverrides": {
+    "anthropic-skills:ai-native-strategy-consultant": "off",
+    "anthropic-skills:ask-atlas-deck-package-spec": "off",
+    "anthropic-skills:atlas-brand": "off",
+    "anthropic-skills:broadband-funnel-analytics": "off",
+    "anthropic-skills:built-in-browser": "off",
+    "anthropic-skills:chrome-browser": "off",
+    "anthropic-skills:computer-use": "off",
+    "anthropic-skills:deep-research": "off",
+    "anthropic-skills:docs": "off",
+    "anthropic-skills:docx": "off",
+    "anthropic-skills:google-workspace": "off",
+    "anthropic-skills:import-memory": "off",
+    "anthropic-skills:jira-ticket-triage": "off",
+    "anthropic-skills:morning": "off",
+    "anthropic-skills:pdf": "off",
+    "anthropic-skills:performance-review-completeness-gate": "off",
+    "anthropic-skills:performance-review-deck": "off",
+    "anthropic-skills:port-skill-to-ask-atlas": "off",
+    "anthropic-skills:pptx": "off",
+    "anthropic-skills:prototype-submit": "off",
+    "anthropic-skills:skill-creator": "off",
+    "anthropic-skills:xlsx": "off"
+  },
   "hooks": {
     "Notification": [
       {
@@ -39,11 +63,13 @@
     "rust-analyzer-lsp@claude-plugins-official": false,
     "playground@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": false,
-    "playwright@claude-plugins-official": false
+    "playwright@claude-plugins-official": false,
+    "data@synced": false
   },
   "effortLevel": "medium",
   "showClearContextOnPlanAccept": true,
   "tui": "fullscreen",
+  "autoMemoryEnabled": true,
   "skipDangerousModePermissionPrompt": true,
   "preferredNotifChannel": "ghostty",
   "skipAutoPermissionPrompt": true,
@@ -53,5 +79,47 @@
   ],
   "feedbackSurveyState": {
     "lastShownTime": 1754081867486
+  },
+  "autoMode": {
+    "environment": [
+      "### Org-wide",
+      "**Organization**: atlas-digital-group (GitHub org; repo github.com:atlas-digital-group/intuition.git)",
+      "**Cloud provider(s)**: AWS (account 991752020057, CI; region us-east-1) — scoped to this repo's CI/CodeBuild/ECR usage; no other provider configured",
+      "**Repository visibility**: private (confirmed via gh for atlas-digital-group/intuition)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**Default / protected branches**: default `master`; protected: `master`, `release/v2026.10.19`, `release/v2026.10.26`, `release/v2026.11.02`, `stable-deprecated` (rulesets: master-branch-protections, pr-rules, release-branch-protections, release-tags, stable-branch-protections — all active)",
+      "**CI/CD deploy targets**: AWS CodeBuild projects `intuition-build` / `intuition-nightly` (account 991752020057, us-east-1); ECR repos `intuition/{gateway,webhooks,db_migrations,files,tenant_tool,customer-portal,management-portal,ask-atlas}`",
+      "**Network posture**: None configured",
+      "**Host containment**: None configured — assume Claude Code runs on an ordinary developer machine with open internet",
+      "**Source control**: The trusted repo (atlas-digital-group/intuition) and its origin remote only — no additional orgs configured",
+      "**Trusted internal domains**: atlasdigitalgroup.atlassian.net (Jira, used by fix-jira-issue skill and contacted in project transcripts)",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: AWS CodeBuild/CloudWatch/ECR/S3 logging bucket `logs-991752020057-us-east-1-an` (config-derived — not a confirmed upload destination; uploads of local data still require confirmation)",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: `.env` files across services (e.g. services/billing/.env, services/payment_processing/.env, services/netsuite/.env, infra/docker/.env, and similar per-service .env files), `tooling/tenant_tool/src/secrets.rs`, `support/helm/current-intuition-version-cm-prod.yaml`, `support/helm/current-intuition-version-cm-demo.yaml`, `codepipeline/buildspecs/prod/build-containerize-portals.yaml`, `codepipeline/buildspecs/prod/build-services.yaml` — share only with engineers on this project, never commit contents externally",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word/segment (e.g. codepipeline/buildspecs/prod/*, cm-prod helm values)",
+      "**Protected deployment namespaces / environments**: k8s namespace `prod`/`production`-named namespaces (none directly observed in recent usage — staging/portals/management seen); fall back to Sensitive remote targets heuristic otherwise",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` (e.g. codepipeline/buildspecs/prod/*, terraform in infra/)",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development (Rust/TypeScript/Vue monorepo, Intuition ISP SaaS platform)",
+      "**Trusted repo**: /Users/colin/code/monorepo (origin github.com:atlas-digital-group/intuition.git), private — confidential material OK here, but content must be this repo's own work",
+      "**Org-specific CLIs**: `just` (command runner), `jira` CLI, `gh`, `aws` (CodeBuild/ECR/S3/logs), `kubectl`, `diesel`, `terraform` — routine under this repo's working directory",
+      "Routine under /Users/colin/code/monorepo/ prefix: just, diesel, cargo clippy, gh pr/run, aws codebuild/ecr/logs/s3 (per check-ci skill, scoped to account 991752020057 us-east-1)"
+    ],
+    "allow": [
+      "$defaults",
+      "Bash(just aws-sso-login)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr view:*)",
+      "Bash(aws codebuild batch-get-build-batches:*)",
+      "Bash(aws ecr describe-images:*)"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Bash(aws s3 rm:*)",
+      "Bash(kubectl delete:*)"
+    ]
   }
 }

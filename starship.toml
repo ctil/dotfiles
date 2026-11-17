@@ -44,6 +44,7 @@ format = ' [$time]($style)'
 modified = "~"
 ahead = ""
 behind = ""
+diverged = "${ahead_count}${behind_count}"
 style = "bright-yellow"
 
 [git_branch]

@@ -45,3 +45,4 @@ end
 
 # Tools
 abbr -a tf terraform
+abbr -a kc kubectl
