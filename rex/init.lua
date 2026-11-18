@@ -14,7 +14,7 @@ rex.bind("ctrl+b>shift+\\", "pane.split", { direction = "right" })
 rex.bind("ctrl+b>shift+-", "pane.split", { direction = "down" })
 rex.bind("ctrl+b>l", "pane.send_key", { key = "ctrl+l" })
 rex.bind("ctrl+b>x", "pane.close")
-rex.bind("ctrl+b>s", "session.switch")
+-- ctrl+b s / ctrl+b ; are bound below, after the last-session actions.
 -- ctrl+b <n> selects tab n (tmux base-index 1)
 for i = 1, 9 do
 	rex.bind("ctrl+b>" .. i, "client.tab.goto", { index = i })
@@ -99,3 +99,78 @@ rm -f "$f"
 	end,
 })
 rex.bind("ctrl+b>v", "copy_mode")
+
+-- tmux `switch-client -l` equivalent: ctrl+b ; toggles to the last session.
+-- Rex doesn't expose which session the app is showing or fire an event when
+-- it changes, so the last session is recorded whenever a session is left via
+-- these bindings (ctrl+b ; and ctrl+b s). Switches made with the mouse/sidebar
+-- aren't seen. State lives in a file, keyed by client, so it survives reloads.
+local last_session_file = (os.getenv("XDG_STATE_HOME") or (os.getenv("HOME") .. "/.local/state"))
+	.. "/rex/last_session"
+
+local function read_last_sessions()
+	local t = {}
+	local f = io.open(last_session_file, "r")
+	if f then
+		for line in f:lines() do
+			local client, session = line:match("^(%S+)%s+(%S+)$")
+			if client then
+				t[client] = session
+			end
+		end
+		f:close()
+	end
+	return t
+end
+
+local function remember_session(ctx)
+	if not (ctx.client_id and ctx.session_id) then
+		return
+	end
+	local t = read_last_sessions()
+	t[ctx.client_id] = ctx.session_id
+	rex.exec({ "mkdir", "-p", (last_session_file:match("^(.*)/")) })
+	local f = io.open(last_session_file, "w")
+	if f then
+		for client, session in pairs(t) do
+			f:write(client, " ", session, "\n")
+		end
+		f:close()
+	end
+end
+
+local function session_exists(id)
+	local r = rex.call("session.list", {})
+	for _, s in ipairs((r and r.sessions) or {}) do
+		if s.session_id == id then
+			return true
+		end
+	end
+	return false
+end
+
+rex.action({
+	name = "last_session",
+	title = "Switch to Last Session",
+	run = function(ctx)
+		local last = ctx.client_id and read_last_sessions()[ctx.client_id]
+		remember_session(ctx)
+		if last and last ~= ctx.session_id and session_exists(last) then
+			rex.client.queue("session.select", { session_id = last })
+		else
+			rex.client.queue("session.previous")
+		end
+	end,
+})
+
+rex.action({
+	name = "switch_session",
+	title = "Change Session (remember last)",
+	run = function(ctx)
+		remember_session(ctx)
+		rex.client.queue("session.switch")
+	end,
+})
+
+rex.bind("ctrl+b>;", "last_session")
+rex.bind("ctrl+b>s", "switch_session")

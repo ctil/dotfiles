@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-"""gwt — Manage git worktrees and tmux sessions
+"""gwt — Manage git worktrees and tmux/rex sessions
+
+Uses rex when run inside the rex multiplexer ($REX_SESSION is set), tmux otherwise.
 
 Usage:
-  gwt create NAME     → create a worktree and tmux session
-  gwt delete [NAME]   → remove worktree NAME and kill its tmux session
+  gwt create NAME     → create a worktree and multiplexer session
+  gwt delete [NAME]   → remove worktree NAME and kill its session
   gwt switch          → switch between worktrees
   gwt clean           → remove worktrees whose upstream branch is gone
   gwt                  → show help
 """
 
 import argparse
+import json
 import os
 import shutil
 import subprocess
@@ -19,8 +22,8 @@ from typing import Any, NoReturn
 
 WORKTREES_BASE = Path.home() / "worktrees"
 
-# The first tmux window will be called WT-{name}. These are additional windows that will be created.
-TMUX_WINDOWS = ["shell", "claude"]
+# The first window/tab will be called WT-{name}. These are additional windows that will be created.
+EXTRA_WINDOWS = ["shell", "claude"]
 
 
 def run(cmd: list[str], **kwargs: Any) -> subprocess.CompletedProcess[str]:
@@ -35,6 +38,100 @@ def run_output(cmd: list[str]) -> tuple[int, str]:
 def die(msg: str) -> NoReturn:
     print(f"gwt: {msg}", file=sys.stderr)
     sys.exit(1)
+
+
+class Tmux:
+    name = "tmux"
+
+    def has_session(self, session: str) -> bool:
+        return run(["tmux", "has-session", "-t", session],
+                   capture_output=True).returncode == 0
+
+    def create_session(self, session: str, cwd: str) -> None:
+        run(["tmux", "new-session", "-d", "-s", session,
+             "-n", f"WT-{session}", "-c", cwd], check=True)
+        for win in EXTRA_WINDOWS:
+            run(["tmux", "new-window", "-t", session, "-n", win, "-c", cwd],
+                check=True)
+        run(["tmux", "select-window", "-t", f"{session}:WT-{session}"],
+            check=True)
+
+    def switch_to(self, session: str) -> None:
+        if os.environ.get("TMUX"):
+            run(["tmux", "switch-client", "-t", session], check=True)
+        else:
+            run(["tmux", "attach", "-t", session], check=True)
+
+    def kill_session(self, session: str) -> None:
+        run(["tmux", "kill-session", "-t", session], check=True)
+
+
+class Rex:
+    """Rex sessions are addressed by label; we resolve labels to session IDs."""
+    name = "rex"
+
+    def _rex_json(self, args: list[str]) -> Any:
+        r = subprocess.run(["rex", *args, "--json"],
+                           capture_output=True, text=True)
+        if r.returncode != 0:
+            die(f"rex {' '.join(args)} failed: {r.stderr.strip()}")
+        return json.loads(r.stdout or "null")
+
+    def _session_id(self, session: str) -> str | None:
+        for s in self._rex_json(["ls"]).get("sessions", []):
+            if s.get("label") == session:
+                return s["session_id"]
+        return None
+
+    def has_session(self, session: str) -> bool:
+        return self._session_id(session) is not None
+
+    def create_session(self, session: str, cwd: str) -> None:
+        created = self._rex_json(
+            ["new", session, "-c", cwd, "--window", f"WT-{session}"])
+        sid = created["session_id"]
+        for win in EXTRA_WINDOWS:
+            self._rex_json(["window", "new", "-s", sid, win,
+                            "-c", cwd, "--focus=false"])
+
+    def _app_client(self) -> str | None:
+        """Find the Rex app showing the session gwt was run from."""
+        args = ["client", "ls"]
+        if os.environ.get("REX_SESSION"):
+            args += ["-s", os.environ["REX_SESSION"]]
+        clients = self._rex_json(args).get("clients", [])
+        for c in clients:
+            if c.get("info", {}).get("kind") == "app":
+                return c["client_id"]
+        return None
+
+    def switch_to(self, session: str) -> None:
+        sid = self._session_id(session)
+        if sid is None:
+            die(f"no rex session '{session}'")
+        cmd = ["rex"]
+        client = self._app_client()
+        if client:
+            cmd += ["-C", client]
+        cmd += ["do", "session.select", f"session_id={sid}"]
+        r = run(cmd, capture_output=True, text=True)
+        if r.returncode != 0:
+            # session.select is a client action; it needs Remote Control
+            # enabled in the Rex app.
+            print(f"gwt: couldn't switch to rex session '{session}' "
+                  f"(select it in the sidebar instead): {r.stderr.strip()}",
+                  file=sys.stderr)
+
+    def kill_session(self, session: str) -> None:
+        sid = self._session_id(session)
+        if sid:
+            run(["rex", "kill", sid], check=True)
+
+
+def get_mux() -> Tmux | Rex:
+    if os.environ.get("REX_SESSION") and shutil.which("rex"):
+        return Rex()
+    return Tmux()
 
 
 def ensure_git_repo() -> str:
@@ -134,17 +231,10 @@ def cmd_switch(args: argparse.Namespace) -> None:
     wtdir, name = fzf_pick_worktree()
     safe_session = safe_session_name(name)
 
-    has_session = run(
-        ["tmux", "has-session", "-t", safe_session],
-        capture_output=True,
-    ).returncode
-    if has_session != 0:
-        die(f"no tmux session '{safe_session}' (use 'gwt create' first)")
-
-    if os.environ.get("TMUX"):
-        run(["tmux", "switch-client", "-t", safe_session], check=True)
-    else:
-        run(["tmux", "attach", "-t", safe_session], check=True)
+    mux = get_mux()
+    if not mux.has_session(safe_session):
+        die(f"no {mux.name} session '{safe_session}' (use 'gwt create' first)")
+    mux.switch_to(safe_session)
 
 
 def cmd_create(args: argparse.Namespace) -> None:
@@ -175,29 +265,11 @@ def cmd_create(args: argparse.Namespace) -> None:
                 check=True,
             )
 
-    # 4 — create tmux session if needed, then switch/attach
-    has_session = run(
-        ["tmux", "has-session", "-t", safe_session],
-        capture_output=True,
-    ).returncode
-    if has_session != 0:
-        run(
-            ["tmux", "new-session", "-d", "-s", safe_session,
-                "-n", f"WT-{safe_session}", "-c", wtdir],
-            check=True,
-        )
-        for win in TMUX_WINDOWS:
-            run(
-                ["tmux", "new-window", "-t", safe_session, "-n", win, "-c", wtdir],
-                check=True,
-            )
-        run(["tmux", "select-window", "-t",
-            f"{safe_session}:WT-{safe_session}"], check=True)
-
-    if os.environ.get("TMUX"):
-        run(["tmux", "switch-client", "-t", safe_session], check=True)
-    else:
-        run(["tmux", "attach", "-t", safe_session], check=True)
+    # 4 — create multiplexer session if needed, then switch/attach
+    mux = get_mux()
+    if not mux.has_session(safe_session):
+        mux.create_session(safe_session, wtdir)
+    mux.switch_to(safe_session)
 
 
 def parse_worktree_map() -> dict[str, str]:
@@ -264,15 +336,12 @@ def cmd_clean(args: argparse.Namespace) -> None:
         return
 
     # 5 — remove each stale worktree
+    mux = get_mux()
     for branch, path in stale_pairs:
         safe_session = safe_session_name(branch)
-        has_session = run(
-            ["tmux", "has-session", "-t", safe_session],
-            capture_output=True,
-        ).returncode
-        if has_session == 0:
-            run(["tmux", "kill-session", "-t", safe_session], check=True)
-            print(f"gwt: killed tmux session '{safe_session}'")
+        if mux.has_session(safe_session):
+            mux.kill_session(safe_session)
+            print(f"gwt: killed {mux.name} session '{safe_session}'")
 
         if Path(path, ".git").exists():
             print(f"gwt: removing worktree '{path}'...")
@@ -299,15 +368,12 @@ def cmd_delete(args: argparse.Namespace) -> None:
         safe_name = name.replace("/", "_")
         wtdir = str(worktrees_base / safe_name)
 
-    # 2 — kill tmux session if it exists
+    # 2 — kill multiplexer session if it exists
     safe_session = safe_session_name(name)
-    has_session = run(
-        ["tmux", "has-session", "-t", safe_session],
-        capture_output=True,
-    ).returncode
-    if has_session == 0:
-        run(["tmux", "kill-session", "-t", safe_session], check=True)
-        print(f"gwt: killed tmux session '{safe_session}'")
+    mux = get_mux()
+    if mux.has_session(safe_session):
+        mux.kill_session(safe_session)
+        print(f"gwt: killed {mux.name} session '{safe_session}'")
 
     # 3 — get the branch name before removing the worktree
     rc, branch = run_output(["git", "-C", wtdir, "rev-parse", "--abbrev-ref", "HEAD"])
@@ -336,7 +402,7 @@ def cmd_delete(args: argparse.Namespace) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="gwt — git worktree in tmux",
+        description="gwt — git worktree in tmux or rex",
     )
     sub = parser.add_subparsers(dest="command")
 
@@ -349,7 +415,7 @@ def main() -> None:
     )
 
     p_delete = sub.add_parser(
-        "delete", help="remove a worktree and kill its tmux session"
+        "delete", help="remove a worktree and kill its tmux/rex session"
     )
     p_delete.add_argument(
         "name",
@@ -362,7 +428,7 @@ def main() -> None:
         help="force removal even with modified or untracked files",
     )
     sub.add_parser(
-        "switch", help="switch to an existing worktree's tmux session",
+        "switch", help="switch to an existing worktree's tmux/rex session",
     )
     sub.add_parser(
         "clean", help="remove worktrees whose upstream branch is gone",
