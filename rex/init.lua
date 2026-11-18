@@ -12,6 +12,10 @@ rex.bind("ctrl+b>t", "pane.zoom")
 rex.bind("ctrl+b>shift+\\", "pane.split", { direction = "right" })
 rex.bind("ctrl+b>shift+-", "pane.split", { direction = "down" })
 rex.bind("ctrl+b>l", "pane.send_key", { key = "ctrl+l" })
+-- ctrl+b <n> selects tab n (tmux base-index 1)
+for i = 1, 9 do
+  rex.bind("ctrl+b>" .. i, "client.tab.goto", { index = i })
+end
 
 -- tmux repeatable (bind -r) bindings: ctrl+b ctrl+r enters, enter/escape leaves
 rex.mode("repeat", { exclusive = true })
