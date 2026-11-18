@@ -74,3 +74,34 @@ for key, n in pairs(nav) do
 	})
 	rex.bind("ctrl+" .. key, "nav_" .. key)
 end
+
+-- tmux copy-mode substitute: Rex has no vi copy mode, so ctrl+b v opens the
+-- pane's scrollback in nvim (read-only, cursor at the bottom) in a floating
+-- pane covering the window. Use v/V/y as usual; :q returns to the pane.
+rex.action({
+	name = "copy_mode",
+	title = "Open Scrollback in nvim",
+	run = function(ctx)
+		if not ctx.block_id then
+			return
+		end
+		local script = [[
+f=$(mktemp -t rex-scrollback) || exit 1
+rex capture -b "$1" --trim --unwrap > "$f"
+nvim -R -c 'set nomodified' + "$f"
+rm -f "$f"
+]]
+		rex.call("session.new_layer", {
+			session_id = ctx.session_id or rex.session_id,
+			bounds = { 0, 0, 1, 1 },
+			focus = true,
+			layout = {
+				block = {
+					flavor = "com.superlogical.terminal.shell",
+					options = { command = { "/bin/sh", "-c", script, "sh", ctx.block_id } },
+				},
+			},
+		})
+	end,
+})
+rex.bind("ctrl+b>v", "copy_mode")
