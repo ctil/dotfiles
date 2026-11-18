@@ -29,6 +29,15 @@ fi
 mkdir -p $HOME/code
 mkdir -p $HOME/.zsh/cache
 
+# Make fish the login shell
+FISH_PATH="$(brew --prefix)/bin/fish"
+if [ -x "$FISH_PATH" ]; then
+    grep -qxF "$FISH_PATH" /etc/shells || echo "$FISH_PATH" | sudo tee -a /etc/shells >/dev/null
+    if [ "$(dscl . -read ~ UserShell | awk '{print $2}')" != "$FISH_PATH" ]; then
+        chsh -s "$FISH_PATH"
+    fi
+fi
+
 # Enable key repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
 
