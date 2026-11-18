@@ -35,3 +35,7 @@ ln -sfn $PWD/fish/completions ~/.config/fish/completions
 
 # Misc
 ln -sf $PWD/gh-dash-config.yaml ~/.config/gh-dash/config.yml
+
+# Rex
+mkdir -p ~/.config/rex
+ln -sf $PWD/rex/init.lua ~/.config/rex/init.lua
