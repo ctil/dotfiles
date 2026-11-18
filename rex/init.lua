@@ -9,12 +9,13 @@ rex.bind("ctrl+b>left", "pane.resize", { amount = 5, direction = "left" })
 rex.bind("ctrl+b>right", "pane.resize", { amount = 5, direction = "right" })
 rex.bind("ctrl+b>z", "pane.zoom")
 rex.bind("ctrl+b>t", "pane.zoom")
+rex.bind("ctrl+b>c", "client.tab.new")
 rex.bind("ctrl+b>shift+\\", "pane.split", { direction = "right" })
 rex.bind("ctrl+b>shift+-", "pane.split", { direction = "down" })
 rex.bind("ctrl+b>l", "pane.send_key", { key = "ctrl+l" })
 -- ctrl+b <n> selects tab n (tmux base-index 1)
 for i = 1, 9 do
-  rex.bind("ctrl+b>" .. i, "client.tab.goto", { index = i })
+	rex.bind("ctrl+b>" .. i, "client.tab.goto", { index = i })
 end
 
 -- tmux repeatable (bind -r) bindings: ctrl+b ctrl+r enters, enter/escape leaves
@@ -41,3 +42,33 @@ rex.bind("shift+cmd+left", "client.tab.move", { direction = "backward" })
 rex.bind("shift+cmd+right", "client.tab.move", { direction = "forward" })
 rex.bind("cmd+right", "pane.focus_next")
 rex.bind("cmd+left", "pane.focus_previous")
+
+-- vim-tmux-navigator equivalent: ctrl+h/j/k/l moves between panes, but passes
+-- the key through when vim is in front (nvim then calls `rex focus` at its edge).
+local terminal = "com.superlogical.terminal"
+local nav = {
+	h = { dir = "left", byte = "\8" },
+	j = { dir = "down", byte = "\n" },
+	k = { dir = "up", byte = "\11" },
+	l = { dir = "right", byte = "\12" },
+}
+local function is_vim(block_id)
+	local p = rex.block.call(terminal, "process", { block_id = block_id })
+	local fg = p and p.foreground
+	local name = ((fg and (fg.argv0 or fg.name)) or ""):match("[^/]*$")
+	return name:match("^g?n?vim?x?$") ~= nil or name == "view" or name == "fzf"
+end
+for key, n in pairs(nav) do
+	rex.action({
+		name = "nav_" .. key,
+		title = "Navigate " .. n.dir .. " (vim-aware)",
+		run = function(ctx)
+			if ctx.block_id and is_vim(ctx.block_id) then
+				rex.block.call(terminal, "write", { block_id = ctx.block_id, data = n.byte })
+			else
+				rex.session.focus_direction({ direction = n.dir })
+			end
+		end,
+	})
+	rex.bind("ctrl+" .. key, "nav_" .. key)
+end
