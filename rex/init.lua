@@ -13,6 +13,8 @@ rex.bind("ctrl+b>c", "client.tab.new")
 rex.bind("ctrl+b>shift+\\", "pane.split", { direction = "right" })
 rex.bind("ctrl+b>shift+-", "pane.split", { direction = "down" })
 rex.bind("ctrl+b>l", "pane.send_key", { key = "ctrl+l" })
+rex.bind("ctrl+b>x", "pane.close")
+rex.bind("ctrl+b>s", "session.switch")
 -- ctrl+b <n> selects tab n (tmux base-index 1)
 for i = 1, 9 do
 	rex.bind("ctrl+b>" .. i, "client.tab.goto", { index = i })
