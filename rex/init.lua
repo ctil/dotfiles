@@ -39,12 +39,6 @@ rex.bind("cmd+p", "pane.send_key", { key = "ctrl+p" })
 rex.bind("ctrl+enter", "com.superlogical.terminal.clear")
 rex.bind("shift+enter", "pane.send_key", { key = "ctrl+j" })
 
--- iTerm2 (GlobalKeyMap)
-rex.bind("shift+cmd+left", "client.tab.move", { direction = "backward" })
-rex.bind("shift+cmd+right", "client.tab.move", { direction = "forward" })
-rex.bind("cmd+right", "pane.focus_next")
-rex.bind("cmd+left", "pane.focus_previous")
-
 -- vim-tmux-navigator equivalent: ctrl+h/j/k/l moves between panes, but passes
 -- the key through when vim is in front (nvim then calls `rex focus` at its edge).
 local terminal = "com.superlogical.terminal"
